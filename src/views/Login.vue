@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import PasswordReset from '../components/PasswordReset'
+import PasswordReset from '@/components/PasswordReset'
 
 export default {
   components: {
