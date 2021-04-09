@@ -40,7 +40,7 @@ const store = new Vuex.Store({
       // // fetch user profile and set in state
       // dispatch('fetchUserProfile', user)
 
-      axios.post(url+'/login', {
+      axios.post(url+'/connexion', {
         email: loginForm.email,
         password: loginForm.password
       })
@@ -58,7 +58,7 @@ const store = new Vuex.Store({
       commit('setUserProfile', user)
       
       // change route to dashboard
-      if (router.currentRoute.path === '/login') {
+      if (router.currentRoute.path === '/connexion') {
         router.push('/')
       }
     },
@@ -85,7 +85,7 @@ const store = new Vuex.Store({
         
       })
       commit('setUserProfile', {})
-      router.push('/login')
+      router.push('/connexion')
     },
     async createPost({ state, commit }, post) {
       // await fb.postsCollection.add({

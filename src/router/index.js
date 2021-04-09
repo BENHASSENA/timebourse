@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Dashboard from '../views/Dashboard.vue'
+import Timebourse from '../views/Timebourse.vue'
 
 
 
@@ -9,13 +9,13 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Dashboard',
-    component: Dashboard
+    name: 'Timebourse',
+    component: Timebourse
   },
   {
-    path: '/login',
-    name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+    path: '/connexion',
+    name: 'Connexion',
+    component: () => import(/* webpackChunkName: "connexion" */ '../views/Connexion.vue')
   },
   {
     path: '/settings',

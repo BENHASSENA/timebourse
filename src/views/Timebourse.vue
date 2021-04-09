@@ -1,5 +1,5 @@
 <template>
-  <div id="dashboard">
+  <div id="timebourse">
 
     <transition name="fade">
       <CommentModal v-if="showCommentModal" :post="selectedPost" @close="toggleCommentModal()"></CommentModal>
@@ -108,16 +108,16 @@ export default {
       this.$store.dispatch('likePost', { id, likesCount })
     },
     async viewPost(post) {
-      const docs = await commentsCollection.where('postId', '==', post.id).get()
+      // const docs = await commentsCollection.where('postId', '==', post.id).get()
 
-      docs.forEach(doc => {
-        let comment = doc.data()
-        comment.id = doc.id
-        this.postComments.push(comment)
-      })
+      // docs.forEach(doc => {
+      //   let comment = doc.data()
+      //   comment.id = doc.id
+      //   this.postComments.push(comment)
+      // })
 
-      this.fullPost = post
-      this.showPostModal = true
+      // this.fullPost = post
+      // this.showPostModal = true
     },
     closePostModal() {
       this.postComments = []

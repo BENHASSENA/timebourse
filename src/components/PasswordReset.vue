@@ -2,11 +2,11 @@
   <div class="modal">
     <div class="modal-content">
       <div @click="$emit('close')" class="close">close</div>
-      <h3>Reset Password</h3>
+      <h3>Réinitialiser le mot de passe</h3>
       <div v-if="!showSuccess">
-        <p>Enter your email to reset your password</p>
+        <p>Entrer votre adresse mail pour réinitialiser votre mot de passe</p>
         <form @submit.prevent>
-          <input v-model.trim="email" type="email" placeholder="you@email.com" />
+          <input v-model.trim="email" type="email" placeholder="Adresse mail" />
         </form>
         <p v-if="errorMsg !== ''" class="error">{{ errorMsg }}</p>
         <button @click="resetPassword()" class="button">Reset</button>

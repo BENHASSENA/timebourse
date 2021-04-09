@@ -39,7 +39,8 @@ header {
   
   // login
   #login {
-    background: linear-gradient(to right, $primary 0%, $primary 50%, $white 50%, $white 100%);
+    background: linear-gradient(to right, $bleu 0%, $bleu 50%, $white 50%, $white 100%);
+
   
     @media screen and (max-width: 742px) {
       height: 100vh;
@@ -60,6 +61,14 @@ header {
       color: $white;
       @media screen and (max-width: 742px) {
         display: none;
+      }
+
+      #inscription{
+        margin-top: 50px;
+      }
+
+      h1{
+        color: $yellow;
       }
   
       p {
@@ -92,8 +101,8 @@ header {
       }
   
       .extras {
-        float: right;
-        text-align: right;
+        float: center;
+        text-align: center;
   
         a {
           display: block;
@@ -149,10 +158,12 @@ header {
   
       h3 {
         margin: 0;
+        font-size: 20px;
       }
   
       p {
         margin: 15px 0;
+        font-size: 15px;
       }
   
       .error {
@@ -223,7 +234,7 @@ header {
       }
   
       .new-posts {
-        color: $primary;
+        color: $rouge;
       }
   
       p {
