@@ -68,7 +68,7 @@
 import { mapState } from 'vuex'
 import moment from 'moment'
 import CommentModal from '@/components/CommentModal'
-import { commentsCollection } from '@/firebase'
+
 
 export default {
   components: {

@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { auth } from '@/firebase'
+
 
 export default {
   data() {
@@ -31,12 +31,12 @@ export default {
     async resetPassword() {
       this.errorMsg = ''
       
-      try {
-        await auth.sendPasswordResetEmail(this.email)
-        this.showSuccess = true
-      } catch (err) {
-        this.errorMsg = err.message
-      }
+      // try {
+      //   await auth.sendPasswordResetEmail(this.email)
+      //   this.showSuccess = true
+      // } catch (err) {
+      //   this.errorMsg = err.message
+      // }
     }
   }
 }

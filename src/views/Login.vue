@@ -27,13 +27,10 @@
         <form v-else @submit.prevent>
           <h1>Inscription</h1>
           <div>
-            <label for="name">Nom</label>
-            <input v-model.trim="signupForm.name" type="text" placeholder="Nom" id="name" />
+            <label for="username">Nom / Pseudo</label>
+            <input v-model.trim="signupForm.username" type="text" placeholder="Nom" id="username" />
           </div>
-          <div>
-            <label for="title">Pseudo</label>
-            <input v-model.trim="signupForm.title" type="text" placeholder="Pseudo" id="title" />
-          </div>
+
           <div>
             <label for="email2">Email</label>
             <input v-model.trim="signupForm.email" type="text" placeholder="you@email.com" id="email2" />
@@ -62,12 +59,11 @@ export default {
       showLoginForm: true,
       showPasswordReset: false,
       loginForm: {
-      email: '',
-      password: ''
+        email: '',
+        password: ''
       },
       signupForm: {
-        name: '',
-        title: '',
+        username: '',
         email: '',
         password: ''
       },
@@ -87,12 +83,11 @@ export default {
       })
     },
     signup() {
-      this.$store.dispatch('signup', {
+      this.$store.dispatch('signupStore', {
+        username: this.signupForm.username,
         email: this.signupForm.email,
         password: this.signupForm.password,
-        name: this.signupForm.name,
-        title: this.signupForm.title
-      })
+      } )
     },
   }
 }

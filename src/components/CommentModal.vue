@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { commentsCollection, postsCollection, auth } from '@/firebase'
+
 
 
 export default {
@@ -23,18 +23,18 @@ export default {
   methods: {
     async addComment() {
       // create comment
-      await commentsCollection.add({
-        createdOn: new Date(),
-        content: this.comment,
-        postId: this.post.id,
-        userId: auth.currentUser.uid,
-        userName: this.$store.state.userProfile.name
-      })
+      // await commentsCollection.add({
+      //   createdOn: new Date(),
+      //   content: this.comment,
+      //   postId: this.post.id,
+      //   userId: auth.currentUser.uid,
+      //   userName: this.$store.state.userProfile.name
+      // })
 
-      // update comment count on post
-      await postsCollection.doc(this.post.id).update({
-        comments: parseInt(this.post.comments) + 1
-      })
+      // // update comment count on post
+      // await postsCollection.doc(this.post.id).update({
+      //   comments: parseInt(this.post.comments) + 1
+      // })
 
       // close modal
       this.$emit('close')
