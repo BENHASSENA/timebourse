@@ -2,7 +2,7 @@
 header {
     position: relative;
     background: $white;
-    box-shadow: 0 0 5px 0 rgba($dark, 0.5);
+    // box-shadow: 0 0 5px 0 rgba($dark, 0.5);
     z-index: 10;
   
     h3 {
@@ -36,10 +36,30 @@ header {
       }
     }
   }
+
+  //navbaruser
+
+  .navbaruser{
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    justify-content: center;
+    li{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    img{
+      width: 35px;
+
+    }
+  }
   
   // login
   #login {
     background: linear-gradient(to right, $bleu 0%, $bleu 50%, $white 50%, $white 100%);
+
 
   
     @media screen and (max-width: 742px) {
@@ -49,7 +69,7 @@ header {
   
     .col1,
     .col2 {
-      height: 100vh;
+      height: 140vh;
       padding-top: 30vh;
       @media screen and (max-width: 742px) {
         height: auto;
@@ -92,6 +112,7 @@ header {
   
     .col2 {
       h1 {
+
         margin-bottom: 2rem;
       }
   
@@ -179,23 +200,165 @@ header {
   
   // dashboard
   #dashboard {
-    section {
-      padding: 2rem 0;
+    // section {
+    //   // padding: 2rem 0;
+    // }
+
+    .title1{
+      margin-top: 5rem;
+    }
+    .title2{
+      margin-bottom: 5rem;
     }
   
     .col1 {
-      flex: 0 0 30%;
+      // flex: 0 0 30%;
   
       @media screen and (max-width: 1000px) {
         flex: 0 0 40%;
       }
+    }
+    .containerboard{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      background-color: $backgroundgrey;
+      margin-top: 2%;
+    }
+
+    .boxleft{
+      width: 20%;
+      margin: 3% ;
+      width:20rem;
+    }
+
+    .boxcenter{
+      max-width: 100%;
+      margin: 3% 0 ;
+      width: 40rem;
+
+      .priorityred{
+        color: $rouge;
+        font-weight: bold;
+        text-align: left;
+        font-size: 14px;
+      }
+      .priorityyellow{
+        color: $yellow;
+        font-weight: bold;
+        text-align: left;
+        font-size: 14px;
+      }
+      .prioritybleu{
+        color: $bleu;
+        font-weight: bold;
+        text-align: left;
+        font-size: 14px;
+      }
+      .prioritygrey{
+        color: $grey;
+        font-weight: bold;
+        text-align: left;
+        font-size: 14px;
+      }
+    }
+
+    .boxright{
+      max-width: 100%;
+      margin: 3% ;
+      width: 40rem;
+    }
+
+    .programme{
+      box-shadow: 10px 10px 20px 0px rgba($dark, 0.3);
+      padding: 30px 20px;
+      border-radius: 10px;
+    }
+
+    .programme2{
+      box-shadow: 10px 10px 20px 0px rgba($dark, 0.3);
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin: 20px 0px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .programme3{
+      box-shadow: 10px 10px 20px 0px rgba($dark, 0.3);
+      padding: 30px 20px;
+      border-radius: 10px;
+
+    }
+
+    .time,.task{
+      display: flex;
+      align-items: center;
+      padding: 10px 0px;
+      justify-content: space-between;
+      align-items: center;
+
+      .boxtime{
+        display: flex;
+      }
+      .boxtime2{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin: 10px 0px;
+        width: 100%;
+
+        .circle{
+          background-color: $yellow;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+       }
+      }
+
+      .titleprogramme{
+        margin-left: 0.8rem;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .titleprogrammeboxright{
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .totaltime{
+        display: flex;
+        font-size: 12px;
+        opacity: 80%;
+
+      }
+
+      .picto{
+        width: 40px;
+        margin-right:  5px;
+      }
+    }
+    .border{
+      border-top: 1px solid $bleu;
+      width: 100%;
+      margin : 20px  0; 
+    }
+
+    .activities{
+      display: flex;
+      justify-content: space-between;
+      max-width: 15rem;
+
     }
   
     .profile {
       background: $white;
       padding: 2rem;
   
-      h5 {}
+      // h5 {}
   
       p {
         color: $medium;
@@ -418,3 +581,4 @@ header {
       margin-top: 2rem;
     }
   }
+

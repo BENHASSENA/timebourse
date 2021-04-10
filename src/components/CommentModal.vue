@@ -1,6 +1,6 @@
 <template>
   <div class="c-container">
-    <a @click="$emit('close')">close</a>
+    <a @click="$emit('close')">Fermer</a>
     <p>add a comment</p>
     <form @submit.prevent>
       <textarea v-model.trim="comment"></textarea>

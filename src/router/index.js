@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Timebourse from '../views/Timebourse.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 
 
@@ -9,8 +9,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Timebourse',
-    component: Timebourse
+    name: 'Dashboard',
+    component: Dashboard
   },
   {
     path: '/connexion',

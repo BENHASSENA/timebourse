@@ -1,5 +1,6 @@
 // imports
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+// @include font-face (Aeonik);
 // colors
 
 $error: #ef5777;
@@ -12,12 +13,19 @@ $rouge: #A90909;
 $bleu: #021F4D;
 $yellow: #FFBE0C;
 $backgroundgrey: #F9F9F7;
+$grey: grey;
 
 // resets
 body {
 	margin: 0;
+	box-sizing: border-box;
 	color: $dark;
-	background: #E6ECF0;
+	// background: #E6ECF0;
+// 	@ font-face {
+// 		font-family :  "Aeonik" ;
+// 	   	src :  url ( "fonts" ) format ( "otf" );
+//    }
+   
 }
 
 html {
@@ -159,6 +167,36 @@ section {
 			background: $rouge;
 		}
 	}
+}
+
+
+
+.button2  {
+	background: $white;
+	border: 2px solid $bleu;
+	outline: 0;
+	margin-bottom: 0.5rem;
+	padding: 0.4rem 1rem;
+	min-width: 150px;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 15px;
+	cursor: pointer;
+
+	::placeholder{
+		color: $rouge;
+	}
+
+	
+
+	&:disabled {
+		opacity: 0.5;
+
+		&:hover {
+			background: $rouge;
+		}
+	}
+
 }
 
 .text-center {

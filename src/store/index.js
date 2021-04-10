@@ -62,6 +62,7 @@ const store = new Vuex.Store({
         router.push('/')
       }
     },
+    
     signupStore({ dispatch }, form) { 
       axios.post(url+'/register', {
         username: form.username,

@@ -3,18 +3,15 @@
     <section>
       <div class="col1">
         <router-link to="/">
-          <h3>Vuegram</h3>
+           <img src="../assets/logo-timebourse-red.png" alt="logo" height="50px"/>
         </router-link>
         <ul class="inline">
-            <li>
-                <router-link to="/">Dashboard</router-link>
-            </li>
-            <li>
-                <router-link to="/settings">Settings</router-link>
-            </li>
-            <li>
-                <a @click="logout()">logout</a>
-            </li>
+          <li>
+              <input @click="search()" class="button2" placeholder="Rechercher"/>
+          </li>
+          <li>
+              <button @click="logout()" class="button">Déconnexion</button>
+          </li>
         </ul>
       </div>
     </section>
