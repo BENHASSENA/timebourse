@@ -5,42 +5,42 @@
     <div class="navbaruser">
       <li>
         <router-link to="/dashboard">
-          <img src="../assets/picto-dashboard.png" alt="picto-dashboard"/>
+          <img src="../assets/images/picto-dashboard.png" alt="picto-dashboard"/>
         </router-link>
       </li>
       <li>
         <router-link to="/tasks">
-          <img src="../assets/picto-tasks.png" alt="picto-tasks"/>
+          <img src="../assets/images/picto-tasks.png" alt="picto-tasks"/>
         </router-link>
       </li>
       <li>
         <router-link to="/activities">
-          <img src="../assets/picto-activities.png" alt="picto-activities"/>
+          <img src="../assets/images/picto-activities.png" alt="picto-activities"/>
         </router-link>
       </li>
       <li>
         <router-link to="/statistiques">
-          <img src="../assets/picto-statistiques.png" alt="picto-statistiques"/>
+          <img src="../assets/images/picto-statistiques.png" alt="picto-statistiques"/>
         </router-link>
       </li>
       <li>
         <router-link to="/rapports">
-          <img src="../assets/picto-rapports.png" alt="picto-rapports"/>
+          <img src="../assets/images/picto-rapports.png" alt="picto-rapports"/>
         </router-link>
       </li>
       <li>
         <router-link to="/objectifs">
-          <img src="../assets/picto-goals.png" alt="picto-goals"/>
+          <img src="../assets/images/picto-goals.png" alt="picto-goals"/>
         </router-link>
       </li>
       <li>
         <router-link to="/compte">
-          <img src="../assets/picto-compte.png" alt="picto-compte"/>
+          <img src="../assets/images/picto-compte.png" alt="picto-compte"/>
         </router-link>
       </li>
       <li>
         <router-link to="/settings">
-          <img src="../assets/picto-settings.png" alt="picto-settings"/>
+          <img src="../assets/images/picto-settings.png" alt="picto-settings"/>
         </router-link>
       </li>
     </div>
@@ -49,28 +49,28 @@
         <div class="programme">
           <div class="time">
             <div class="boxtime">
-              <span><img src="../assets/picto-sun.png" alt="picto-sun"/></span>
+              <span><img src="../assets/images/picto-sun.png" alt="picto-sun"/></span>
               <p class="titleprogramme">Aujourd'hui</p>
             </div>
             <p class="totaltime">4h</p>
           </div>
           <div class="time">
             <div class="boxtime">
-              <span><img src="../assets/picto-suntomorrow.png" alt="picto-suntomorrow"/></span>
+              <span><img src="../assets/images/picto-suntomorrow.png" alt="picto-suntomorrow"/></span>
               <p class="titleprogramme">Demain</p>
             </div>
             <p class="totaltime">6h</p>
           </div>
           <div class="time">
             <div class="boxtime">
-              <span><img src="../assets/picto-calendar.png" alt="picto-calendar"/></span>
+              <span><img src="../assets/images/picto-calendar.png" alt="picto-calendar"/></span>
               <p class="titleprogramme">Un jour</p>
             </div>
             <p class="totaltime">2h</p>
           </div>
           <div class="time">
             <div class="boxtime">
-              <span><img src="../assets/picto-sunoneday.png" alt="picto-sunoneday"/></span>
+              <span><img src="../assets/images/picto-sunoneday.png" alt="picto-sunoneday"/></span>
               <p class="titleprogramme">A venir</p>
             </div>
             <p class="totaltime">20h</p>
@@ -78,49 +78,49 @@
           <div class="border"></div>
           <div class="time">
             <div class="boxtime2">
-              <span class="circle"><img src="../assets/picto-dossier.png" alt="picto-dossier"/></span>
+              <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
               <p class="titleprogramme">Travail</p>
             </div>
             <p class="totaltime">10h</p>
           </div>
           <div class="time">
             <div class="boxtime2">
-              <span class="circle"><img src="../assets/picto-dossier.png" alt="picto-dossier"/></span>
+              <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
               <p class="titleprogramme">Santé</p>
             </div>
             <p class="totaltime">1h</p>
           </div>
           <div class="time">
             <div class="boxtime2">
-              <span class="circle"><img src="../assets/picto-dossier.png" alt="picto-dossier"/></span>
+              <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
               <p class="titleprogramme">Famille</p>
             </div>
             <p class="totaltime">10h</p>
           </div>
           <div class="time">
             <div class="boxtime2">
-              <span class="circle"><img src="../assets/picto-dossier.png" alt="picto-dossier"/></span>
+              <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
               <p class="titleprogramme">Sport</p>
             </div>
             <p class="totaltime">5h</p>
           </div>
           <div class="time">
             <div class="boxtime2">
-              <span class="circle"><img src="../assets/picto-dossier.png" alt="picto-dossier"/></span>
+              <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
               <p class="titleprogramme">Bénévolat</p>
             </div>
             <p class="totaltime">10h</p>
           </div>
           <div class="time">
             <div class="boxtime2">
-              <span class="circle"><img src="../assets/picto-dossier.png" alt="picto-dossier"/></span>
+              <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
               <p class="titleprogramme">Maison</p>
             </div>
             <p class="totaltime">6h</p>
           </div>
           <div class="time">
             <div class="boxtime2">
-              <span class="circle"><img src="../assets/picto-dossier.png" alt="picto-dossier"/></span>
+              <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
               <p class="titleprogramme">Sommeil</p>
             </div>
             <p class="totaltime">10h</p>
@@ -132,9 +132,8 @@
         <div class="programme2">
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-add.png" alt="picto-check"/></span>
-              <p class="totaltime">Ajouter une tâche</p>
-              
+              <span class="picto"><img src="../assets/images/picto-add.png" alt="picto-check"/></span>
+              <p class="totaltime"><a @click="toggleFormulaire()">Ajouter une tâche</a></p>
             </div>
           </div> 
         </div>
@@ -145,8 +144,8 @@
         <div class="programme2">
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/picto-chrono.png" alt="picto-chrono"/></span>
+              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
+              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
               <p class="titleprogramme">Nom de la tâche</p>
             </div>
             <p class="totaltime">Aujourd'hui</p>
@@ -155,8 +154,8 @@
         <div class="programme2">
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/picto-chrono.png" alt="picto-chrono"/></span>
+              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
+              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
               <p class="titleprogramme">Nom de la tâche</p>
             </div>
             <p class="totaltime">Aujourd'hui</p>
@@ -168,8 +167,8 @@
         <div class="programme2">
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/picto-chrono.png" alt="picto-chrono"/></span>
+              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
+              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
               <p class="titleprogramme">Nom de la tâche</p>
             </div>
             <p class="totaltime">Aujourd'hui</p>
@@ -181,8 +180,8 @@
         <div class="programme2">
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/picto-chrono.png" alt="picto-chrono"/></span>
+              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
+              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
               <p class="titleprogramme">Nom de la tâche</p>
             </div>
             <p class="totaltime">Aujourd'hui</p>
@@ -194,8 +193,8 @@
         <div class="programme2">
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/picto-chrono.png" alt="picto-chrono"/></span>
+              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
+              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
               <p class="titleprogramme">Nom de la tâche</p>
             </div>
             <p class="totaltime">Aujourd'hui</p>
@@ -207,56 +206,56 @@
         <div class="programme">
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-flag.png" alt="picto-flag"/></span>
-              <span class="picto"><img src="../assets/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/picto-chrono.png" alt="picto-chrono"/></span>
+              <span class="picto"><img src="../assets/images/picto-flag.png" alt="picto-flag"/></span>
+              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
+              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
               <p class="titleprogrammeboxright">Nom de la tâche</p>
             </div>
           </div>        
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-chrono.png" alt="picto-chrono"/></span>
+              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
             <p class="totaltime">Temps estimé</p>
             </div>
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-chrono.png" alt="picto-chrono"/></span>
+              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
               <p class="totaltime">1h</p>
             </div>
           </div>     
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-chrono.png" alt="picto-chrono"/></span>
+              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
             <p class="totaltime">Temps réél</p>
             </div>
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-chrono.png" alt="picto-chrono"/></span>
+              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
               <p class="totaltime">1h</p>
             </div>
           </div>      
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-calendar.png" alt="picto-calendar"/></span>
+              <span class="picto"><img src="../assets/images/picto-calendar.png" alt="picto-calendar"/></span>
             <p class="totaltime">Echéance</p>
             </div>
             <p class="titleprogramme">Aujourd'hui</p>
           </div>      
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-dossier-jaune.png" alt="picto-dossier-jaune"/></span>
+              <span class="picto"><img src="../assets/images/picto-dossier-jaune.png" alt="picto-dossier-jaune"/></span>
             <p class="totaltime">Dossier</p>
             </div>
             <p class="titleprogramme">Travail</p>
           </div>      
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-reveil.png" alt="picto-reveil"/></span>
+              <span class="picto"><img src="../assets/images/picto-reveil.png" alt="picto-reveil"/></span>
             <p class="totaltime">Rappel</p>
             </div>
             <p class="totaltime">Aucun</p>
           </div>      
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-recurrence.png" alt="picto-recurrence"/></span>
+              <span class="picto"><img src="../assets/images/picto-recurrence.png" alt="picto-recurrence"/></span>
             <p class="totaltime">Récurrence</p>
             </div>
             <p class="titleprogramme">Chaque jour</p>
@@ -264,14 +263,14 @@
           <div class="border"></div>  
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-check.png" alt="picto-check"/></span>
+              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
             <p class="titleprogramme">Nom de la sous tâche</p>
             </div>
           </div>  
           <div class="border"></div>  
           <div class="task">
             <div class="boxtime">
-              <span class="picto"><img src="../assets/picto-add.png" alt="picto-check"/></span>
+              <span class="picto"><img src="../assets/images/picto-add.png" alt="picto-check"/></span>
             <p class="totaltime">Ajouter une sous tâche</p>
             </div>
           </div> 
@@ -280,121 +279,6 @@
           
       </div>
     </div>
-
-
-  <v-row justify="center">
-    <v-dialog
-      v-model="dialog"
-      persistent
-      max-width="600px"
-    >
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on"
-        >
-          Open Dialog
-        </v-btn>
-      </template>
-      <v-card>
-        <v-card-title>
-          <span class="headline">User Profile</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
-                <v-text-field
-                  label="Legal first name*"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
-                <v-text-field
-                  label="Legal middle name"
-                  hint="example of helper text only on focus"
-                ></v-text-field>
-              </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-                md="4"
-              >
-                <v-text-field
-                  label="Legal last name*"
-                  hint="example of persistent helper text"
-                  persistent-hint
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  label="Email*"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  label="Password*"
-                  type="password"
-                  required
-                ></v-text-field>
-              </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-              >
-                <v-select
-                  :items="['0-17', '18-29', '30-54', '54+']"
-                  label="Age*"
-                  required
-                ></v-select>
-              </v-col>
-              <v-col
-                cols="12"
-                sm="6"
-              >
-                <v-autocomplete
-                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-                  label="Interests"
-                  multiple
-                ></v-autocomplete>
-              </v-col>
-            </v-row>
-          </v-container>
-          <small>*indicates required field</small>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="blue darken-1"
-            text
-            @click="dialog = false"
-          >
-            Close
-          </v-btn>
-          <v-btn
-            color="blue darken-1"
-            text
-            @click="dialog = false"
-          >
-            Save
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
-  </v-row>
-
     
 
     <transition name="fade">
@@ -459,24 +343,127 @@
       </div>
     </transition>
 
+<v-dialog
+        v-model="dialog"
+        max-width="600px"
+      >
+        <v-card>
+          <v-card-text>
+            <v-container>
+                <v-card
+                  class="mx-auto"
+                  max-width="300"
+                  tile
+                >
+ 
+                      <v-list-item
+                        v-for="(item, i) in items"
+                        :key="i"
+                      >
+                        <v-list-item-icon>
+                          <v-icon v-text="item.icon"></v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                          <v-list-item-title v-text="item.text"></v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+
+                </v-card>
+
+              <v-row>
+                <v-col
+                  cols="12"
+                >
+                  <v-text-field
+                    label="Nom de la tâche"
+                    required
+                  ></v-text-field>
+                </v-col>
+                //Temps estimé
+                <v-col
+                  cols="12"
+                >
+                <v-time-picker
+                v-model="time"
+                dark
+                class="mt-4"
+                format="24hr"
+                scrollable
+                ></v-time-picker>
+                </v-col>
+
+                // Echeance
+                <v-col
+                    cols="12"
+                    lg="6"
+                  >
+                  <v-menu
+                    ref="menu1"
+                    v-model="menu1"
+                    :close-on-content-click="false"
+                    transition="scale-transition"
+                    offset-y
+                    max-width="290px"
+                    min-width="auto"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field
+                        v-model="date"
+                        label="Date"
+                        persistent-hint
+                        prepend-icon="mdi-calendar"
+                        v-bind="attrs"
+                        @blur="date = parseDate(dateFormatted)"
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      v-model="date"
+                      no-title
+                      @input="menu1 = false"
+                    ></v-date-picker>
+                  </v-menu>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="blue darken-1"
+              text
+              @click="dialog = false"
+            >
+              Close
+            </v-btn>
+            <v-btn
+              color="blue darken-1"
+              text
+              @click="dialog = false"
+            >
+              Save
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+</v-dialog>
+
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import moment from 'moment'
-
 import CommentModal from '@/components/CommentModal'
+
 
 export default {
   components: {
     CommentModal,
+
   },
   data() {
     return {
-      on:{},
-      attrs:{},
-      dialog: false,
+      showFormulaire: false,
       post: {
         content: ''
       },
@@ -484,7 +471,17 @@ export default {
       selectedPost: {},
       showPostModal: false,
       fullPost: {},
-      postComments: []
+      postComments: [],
+      dialog: false,
+      time: '',
+      menu1:'',
+      date:'',
+      selectedItem: 1,
+      items: [
+        { text: 'Temps estimé', icon: 'mdi-clock' },
+        { text: 'Echéance', icon: 'mdi-calendar' },
+        { text: 'Priorité', icon: 'mdi-flag' },
+      ],
     }
     },
   computed: {
@@ -495,6 +492,9 @@ export default {
     createPost() {
       this.$store.dispatch('createPost', { content: this.post.content })
       this.post.content = ''
+    },
+    toggleFormulaire(){
+      this.dialog = true
     },
     toggleCommentModal(post) {
       this.showCommentModal = !this.showCommentModal

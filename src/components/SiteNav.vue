@@ -3,7 +3,7 @@
     <section>
       <div class="col1">
         <router-link to="/">
-           <img src="../assets/logo-timebourse-red.png" alt="logo" height="50px"/>
+           <img src="../assets/images/logo-timebourse-red.png" alt="logo" height="50px"/>
         </router-link>
         <ul class="inline">
           <li>

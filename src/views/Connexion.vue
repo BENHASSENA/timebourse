@@ -3,10 +3,10 @@
     <PasswordReset v-if="showPasswordReset" @close="togglePasswordReset()"></PasswordReset>
     <section>
       <div class="col1">
-        <img src="../assets/logo-timebourse-red.png" alt="logo" width="100px"/>
+        <img src="../assets/images/logo-timebourse-red.png" alt="logo" width="100px"/>
         <h1>TimeBourse</h1>
         <p>Bienvenue sur l'application qui vous fera gagner du temps  </p>
-        <img id="inscription" src="../assets/img-inscription.png" alt="image homme qui s'inscrit" width="300px"/>
+        <img id="inscription" src="../assets/images/img-inscription.png" alt="image homme qui s'inscrit" width="300px"/>
       </div>
       <div :class="{ 'signup-form': !showLoginForm }" class="col2">
         <form v-if="showLoginForm" @submit.prevent>

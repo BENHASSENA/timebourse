@@ -78,6 +78,20 @@ const store = new Vuex.Store({
       });
     
     },
+    createTaskStore({ dispatch }, form) { 
+      axios.post(url+'/', {
+        username: form.username,
+        email: form.email,
+      })
+      .then(function (response) {
+        console.log(response);
+        dispatch('fetchUserProfile', response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    
+    },
     async logout({ commit }, loginForm) {
       // await fb.auth.signOut()
 

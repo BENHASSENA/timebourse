@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" data-app>
     <SiteNav v-if="showNav"></SiteNav>
     <router-view/>
   </div>
