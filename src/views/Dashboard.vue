@@ -343,60 +343,97 @@
       </div>
     </transition>
 
-<v-dialog
-        v-model="dialog"
-        max-width="600px"
-      >
-        <v-card>
-          <v-card-text>
-            <v-container>
-                <v-card
-                  class="mx-auto"
-                  max-width="300"
-                  tile
+    <v-dialog
+            v-model="dialog"
+            max-width="600px"
+          >
+      <v-card>
+        <v-card-text>
+          <v-container>
+             <!-- Nom de la tâche -->
+              <v-col
+                cols="12"
+              >
+                <v-text-field
+                  label="Ajouter une tâche"
+                  required
                 >
- 
-                      <v-list-item
-                        v-for="(item, i) in items"
-                        :key="i"
-                      >
-                        <v-list-item-icon>
-                          <v-icon v-text="item.icon"></v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-content>
-                          <v-list-item-title v-text="item.text"></v-list-item-title>
-                        </v-list-item-content>
-                      </v-list-item>
-
-                </v-card>
-
-              <v-row>
-                <v-col
-                  cols="12"
+                {{ createTaskForm.nameTask}}
+                </v-text-field>
+              </v-col>
+            <!--  Priorité -->
+              <v-list-group
+                  no-action
+                  sub-group
                 >
-                  <v-text-field
-                    label="Nom de la tâche"
-                    required
-                  ></v-text-field>
-                </v-col>
-                //Temps estimé
-                <v-col
-                  cols="12"
-                >
-                <v-time-picker
-                v-model="time"
-                dark
-                class="mt-4"
-                format="24hr"
-                scrollable
-                ></v-time-picker>
-                </v-col>
+                  <template v-slot:activator>
+                    <v-list-item-content>
+                      <v-list-item-title>Priorité</v-list-item-title>
+                    </v-list-item-content>
+                  </template>
 
-                // Echeance
-                <v-col
-                    cols="12"
-                    lg="6"
+                  <v-list-item
+                    v-for="([title], i) in cruds"
+                    :key="i"
+                    link
                   >
+                    <v-list-item-title v-text="title"></v-list-item-title>
+
+                  </v-list-item>
+              </v-list-group>
+             <!-- Temps estimé -->
+              <v-list-group
+                      no-action
+                      sub-group
+                    >
+                      <template v-slot:activator>
+                        <v-list-item-content>
+                          <v-list-item-title>Temps estimé</v-list-item-title>
+                        </v-list-item-content>
+                      </template>
+                        <v-time-picker
+                        v-model="time"
+                        dark
+                        class="mt-4"
+                        format="24hr"
+                        scrollable>
+                        </v-time-picker>
+
+              </v-list-group>
+             <!-- Temps réél -->
+              <v-list-group
+                      no-action
+                      sub-group
+                    >
+                      <template v-slot:activator>
+                        <v-list-item-content>
+                          <v-list-item-title>Temps réél</v-list-item-title>
+                        </v-list-item-content>
+                      </template>
+                        <v-time-picker
+                        v-model="time"
+                        dark
+                        class="mt-4"
+                        format="24hr"
+                        scrollable>
+                        </v-time-picker>
+
+              </v-list-group>
+             <!-- Echéance -->
+            <v-list-group
+                no-action
+                sub-group
+              >
+                <template v-slot:activator>
+                  <v-list-item-content>
+                    <v-list-item-title>Echéance</v-list-item-title>
+                  </v-list-item-content>
+                </template>
+               
+                <v-col
+                  cols="12"
+                  lg="12"
+                >
                   <v-menu
                     ref="menu1"
                     v-model="menu1"
@@ -424,28 +461,73 @@
                     ></v-date-picker>
                   </v-menu>
                 </v-col>
-              </v-row>
-            </v-container>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn
-              color="blue darken-1"
-              text
-              @click="dialog = false"
-            >
-              Close
-            </v-btn>
-            <v-btn
-              color="blue darken-1"
-              text
-              @click="dialog = false"
-            >
-              Save
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-</v-dialog>
+
+            </v-list-group>
+             <!-- Rappel -->
+            <v-list-group
+                no-action
+                sub-group
+              >
+                <template v-slot:activator>
+                  <v-list-item-content>
+                    <v-list-item-title>Rappel</v-list-item-title>
+                  </v-list-item-content>
+                </template>
+               
+                <v-col
+                  cols="12"
+                  lg="12"
+                >
+                  <v-menu
+                    ref="menu1"
+                    v-model="menu1"
+                    :close-on-content-click="false"
+                    transition="scale-transition"
+                    offset-y
+                    max-width="290px"
+                    min-width="auto"
+                  >
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-text-field
+                        v-model="date"
+                        label="Date"
+                        persistent-hint
+                        prepend-icon="mdi-calendar"
+                        v-bind="attrs"
+                        @blur="date = parseDate(dateFormatted)"
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker
+                      v-model="date"
+                      no-title
+                      @input="menu1 = false"
+                    ></v-date-picker>
+                  </v-menu>
+                </v-col>
+
+            </v-list-group>         
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="dialog = false"
+          >
+            Close
+          </v-btn>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="dialog = false , createTask()"
+          >
+            Save
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
   </div>
 </template>
@@ -459,10 +541,17 @@ import CommentModal from '@/components/CommentModal'
 export default {
   components: {
     CommentModal,
-
   },
   data() {
     return {
+      createTaskForm: {
+        nameTask: '',
+        // priorityTask: '',
+        // timeEstimateTask:'',
+        // timeRealTask:'',
+        // echeanceTask:'',
+        // rappelTask:'',
+      },
       showFormulaire: false,
       post: {
         content: ''
@@ -476,11 +565,14 @@ export default {
       time: '',
       menu1:'',
       date:'',
-      selectedItem: 1,
-      items: [
-        { text: 'Temps estimé', icon: 'mdi-clock' },
-        { text: 'Echéance', icon: 'mdi-calendar' },
-        { text: 'Priorité', icon: 'mdi-flag' },
+      admins: [
+        ['Settings', 'mdi-cog-outline'],
+      ],
+      cruds: [
+        ['Haute priorité'],
+        ['Moyenne priorité'],
+        ['Faible priorité'],
+        ['Pas de priorité'],
       ],
     }
     },
@@ -489,6 +581,17 @@ export default {
 
   },
   methods: {
+    createTask() {
+      console.log('ok bien ajouter');
+        this.$store.dispatch('createTaskStore', {
+        nameTask: this.createTaskForm.nameTask,
+        // priorityTask: this.createTaskForm.priorityTask,
+        // timeEstimateTask:this.createTaskForm.timeEstimateTask,
+        // timeRealTask:this.createTaskForm.timeRealTask,
+        // echeanceTask:this.createTaskForm.echeanceTask,
+        // rappelTask:this.createTaskForm.rappelTask,
+        })
+    },
     createPost() {
       this.$store.dispatch('createPost', { content: this.post.content })
       this.post.content = ''

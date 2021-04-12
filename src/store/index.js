@@ -19,12 +19,16 @@ Vue.use(Vuex)
 //   store.commit('setPosts', postsArray)
 // })
 
+
+
+
 const url = 'http://localhost:8000/api/user';
 
 const store = new Vuex.Store({
   state: {
     userProfile: {},
-    posts: []
+    posts: [],
+    createTaskForm: {},
   },
   mutations: {
     setUserProfile(state, val) {
@@ -32,6 +36,9 @@ const store = new Vuex.Store({
     },
     setPosts(state, val) {
       state.posts = val
+    },
+    setCreateTaskForm(state, val) {
+      state.createTaskForm = val
     }
   },
   actions: {
@@ -78,20 +85,12 @@ const store = new Vuex.Store({
       });
     
     },
-    createTaskStore({ dispatch }, form) { 
-      axios.post(url+'/', {
-        username: form.username,
-        email: form.email,
-      })
-      .then(function (response) {
-        console.log(response);
-        dispatch('fetchUserProfile', response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+
+    async createTaskStore({ state, commit }, createTaskForm) { 
+      await createTaskForm();
     
     },
+
     async logout({ commit }, loginForm) {
       // await fb.auth.signOut()
 
