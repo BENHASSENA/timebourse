@@ -27,49 +27,56 @@ const url = 'http://localhost:8000/api/user';
 const store = new Vuex.Store({
   state: {
     userProfile: {},
+    userTask:[],
     posts: [],
-    createTaskForm: {},
   },
   mutations: {
-    setUserProfile(state, val) {
+    enregistementUtilisateur(state, val) {
       state.userProfile = val
     },
     setPosts(state, val) {
       state.posts = val
     },
-    setCreateTaskForm(state, val) {
-      state.createTaskForm = val
+    setUserTask(state, val) {
+      state.userTask = val
     }
+
   },
   actions: {
-    async login({ dispatch }, loginForm) {
+    async login({ dispatch, commit }, loginForm) {
       // const {user} = await fb.auth.signInWithEmailAndPassword(form.email, form.password)
       // // fetch user profile and set in state
-      // dispatch('fetchUserProfile', user)
+      // dispatch('traitementUtilisateur', user)
 
       axios.post(url+'/connexion', {
         email: loginForm.email,
         password: loginForm.password
       })
       .then(function (response) {
-        console.log(response);
-        dispatch('fetchUserProfile', response);
+        console.log(response.data._id, "response.data");
+        dispatch('traitementUtilisateur', response.data._id);
+        axios.post(url+'/usertask',{
+          id: response.data._id,
+        })
+        .then(function(response){
+          console.log(response,"tache utilisateur");
+          commit ('setUserTask', response.data);
+        });
       })
       .catch(function (error) {
         console.log(error);
       });
 
     },
-    async fetchUserProfile({ commit }, user) {
+    async traitementUtilisateur({ commit }, user) {
 
-      commit('setUserProfile', user)
+      commit('enregistementUtilisateur', user)
       
       // change route to dashboard
       if (router.currentRoute.path === '/connexion') {
         router.push('/')
       }
     },
-    
     signupStore({ dispatch }, form) { 
       axios.post(url+'/register', {
         username: form.username,
@@ -78,19 +85,36 @@ const store = new Vuex.Store({
       })
       .then(function (response) {
         console.log(response);
-        dispatch('fetchUserProfile', response);
+        dispatch('traitementUtilisateur', response);
       })
       .catch(function (error) {
         console.log(error);
       });
     
     },
+    async createTaskStore({ dispatch, state }, createTaskForm) { 
+      createTaskForm.id = state.userProfile._id
+      console.log(createTaskForm)
 
-    async createTaskStore({ state, commit }, createTaskForm) { 
-      await createTaskForm();
-    
+      axios.post(url+'/addtask', createTaskForm)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      }); 
     },
-
+    async deleteTaskStore({dispatch, commit},createTaskForm){
+      
+      axios.delete(url+'/delete', {})
+      .then(function (response) {
+        console.log(response, "tache utilisateur");
+        
+      })
+      
+      // commit('setUserTask', {})
+      // router.push('/connexion')
+    },
     async logout({ commit }, loginForm) {
       // await fb.auth.signOut()
 
@@ -98,7 +122,7 @@ const store = new Vuex.Store({
       axios.post(url+'/logout', {
         
       })
-      commit('setUserProfile', {})
+      commit('enregistementUtilisateur', {})
       router.push('/connexion')
     },
     async createPost({ state, commit }, post) {
@@ -138,7 +162,7 @@ const store = new Vuex.Store({
       //   title: user.title
       // })
     
-      // dispatch('fetchUserProfile', { uid: userId })
+      // dispatch('traitementUtilisateur', { uid: userId })
     
       // // update all posts by user
       // const postDocs = await fb.postsCollection.where('userId', '==', userId).get()

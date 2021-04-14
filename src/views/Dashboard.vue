@@ -1,7 +1,9 @@
 <template>
   <div id="dashboard"> 
+    <!-- titre du dashboard -->
     <h1 class="title1">Tableau de bord</h1>
     <p class="title2">Gestion des tâches</p>
+    <!-- barre de navigation du dashboard -->
     <div class="navbaruser">
       <li>
         <router-link to="/dashboard">
@@ -10,40 +12,41 @@
       </li>
       <li>
         <router-link to="/tasks">
-          <img src="../assets/images/picto-tasks.png" alt="picto-tasks"/>
+          <img class="en-cours" src="../assets/images/picto-tasks.png" alt="picto-tasks"/>
         </router-link>
       </li>
       <li>
         <router-link to="/activities">
-          <img src="../assets/images/picto-activities.png" alt="picto-activities"/>
+          <img class="en-cours" src="../assets/images/picto-activities.png" alt="picto-activities"/>
         </router-link>
       </li>
       <li>
         <router-link to="/statistiques">
-          <img src="../assets/images/picto-statistiques.png" alt="picto-statistiques"/>
+          <img class="en-cours" src="../assets/images/picto-statistiques.png" alt="picto-statistiques"/>
         </router-link>
       </li>
       <li>
         <router-link to="/rapports">
-          <img src="../assets/images/picto-rapports.png" alt="picto-rapports"/>
+          <img class="en-cours" src="../assets/images/picto-rapports.png" alt="picto-rapports"/>
         </router-link>
       </li>
       <li>
         <router-link to="/objectifs">
-          <img src="../assets/images/picto-goals.png" alt="picto-goals"/>
+          <img class="en-cours" src="../assets/images/picto-goals.png" alt="picto-goals"/>
         </router-link>
       </li>
       <li>
         <router-link to="/compte">
-          <img src="../assets/images/picto-compte.png" alt="picto-compte"/>
+          <img class="en-cours" src="../assets/images/picto-compte.png" alt="picto-compte"/>
         </router-link>
       </li>
       <li>
         <router-link to="/settings">
-          <img src="../assets/images/picto-settings.png" alt="picto-settings"/>
+          <img class="en-cours" src="../assets/images/picto-settings.png" alt="picto-settings"/>
         </router-link>
       </li>
     </div>
+    <!-- contenu du dashboard -->
     <div class="containerboard">
       <div class="boxleft">
         <div class="programme">
@@ -139,67 +142,21 @@
         </div>
         
         <div class="titlepriority">
-          <p class="priorityred">Haute priorité</p>   
+          <p class="priorityred">Mes tâches</p>   
         </div>
-        <div class="programme2">
+        <div  v-for="(task, i) in userTask" :key="i" class="programme2">
           <div class="task">
             <div class="boxtime">
               <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
-              <p class="titleprogramme">Nom de la tâche</p>
+              <p class="titleprogramme">{{task.nameTask}}</p>
             </div>
-            <p class="totaltime">Aujourd'hui</p>
+            <p class="totaltime">
+            <v-icon @click="toggleFormulaire(task)">{{ icons.mdiPencil }}</v-icon>
+            <v-icon @click="supprimer()">{{ icons.mdiDelete }}</v-icon>
+            </p>
           </div>
         </div>
-        <div class="programme2">
-          <div class="task">
-            <div class="boxtime">
-              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
-              <p class="titleprogramme">Nom de la tâche</p>
-            </div>
-            <p class="totaltime">Aujourd'hui</p>
-          </div>
-        </div>
-        <div class="titlepriority">
-          <p class="priorityyellow">Moyenne priorité</p>   
-        </div>
-        <div class="programme2">
-          <div class="task">
-            <div class="boxtime">
-              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
-              <p class="titleprogramme">Nom de la tâche</p>
-            </div>
-            <p class="totaltime">Aujourd'hui</p>
-          </div>
-        </div>
-        <div class="titlepriority">
-          <p class="prioritybleu">Faible priorité</p>   
-        </div>
-        <div class="programme2">
-          <div class="task">
-            <div class="boxtime">
-              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
-              <p class="titleprogramme">Nom de la tâche</p>
-            </div>
-            <p class="totaltime">Aujourd'hui</p>
-          </div>
-        </div>
-        <div class="titlepriority">
-          <p class="prioritygrey">Pas de priorité</p>   
-        </div>
-        <div class="programme2">
-          <div class="task">
-            <div class="boxtime">
-              <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
-              <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
-              <p class="titleprogramme">Nom de la tâche</p>
-            </div>
-            <p class="totaltime">Aujourd'hui</p>
-          </div>
-        </div>
+
       </div>
 
       <div class="boxright">
@@ -275,16 +232,13 @@
             </div>
           </div> 
         </div>
-        
-          
       </div>
     </div>
-    
-
+    <!-- utilisation du composant Componantmodal -->
     <transition name="fade">
       <CommentModal v-if="showCommentModal" :post="selectedPost" @close="toggleCommentModal()"></CommentModal>
     </transition>
-
+    <!-- creation d'un post -->
     <section>
       <div class="col1">
         <div class="profile">
@@ -317,8 +271,7 @@
         </div>
       </div>
     </section>
-
-      <!-- full post modal -->
+    <!-- full post modal -->
     <transition name="fade">
       <div v-if="showPostModal" class="p-modal">
         <div class="p-container">
@@ -342,190 +295,105 @@
         </div>
       </div>
     </transition>
-
+    <!-- formulaire de la pop up -->
     <v-dialog
             v-model="dialog"
             max-width="600px"
-          >
+    >
       <v-card>
-        <v-card-text>
           <v-container>
-             <!-- Nom de la tâche -->
-              <v-col
-                cols="12"
-              >
-                <v-text-field
-                  label="Ajouter une tâche"
-                  required
+            <div class="programme">
+              <div class="task">
+                <div class="boxtime">
+                  <span class="picto"><input type="checkbox"></span>
+                  <p class="titleprogrammeboxright">          
+                  <!-- Nom de la tâche -->
+                  <input class="toto" type="text" v-model="createTaskForm.nameTask" placeholder="Nom de la tache"></p>
+                </div>
+              </div>        
+              <div class="task">
+                <div class="boxtime">
+                  <span class="picto"><img src="../assets/images/picto-chrono.png" alt="picto-chrono"/></span>
+                <p class="totaltime">Temps estimé</p>
+                </div>
+                <div class="boxtime">
+                  <!-- Durée temps estimé -->
+                  <input class="totaltime" type="time" v-model="createTaskForm.timeEstimateTask" placeholder="Durée de la tache">
+                </div>
+              </div>     
+              <div class="task">
+                <div class="boxtime">
+                  <!-- Priorité -->
+                  <span class="picto"><img src="../assets/images/picto-flag.png" alt="picto-flag"/></span>
+                <p class="totaltime">Priorité</p>
+                </div>
+                <div class="boxtime">
+                  <p class="totaltime">
+                    <select class="totaltime" v-model="createTaskForm.priorityTask"  id="priority">
+                      <option value="">Pas de priorité</option>
+                      <option value="1">Faible priorité</option>
+                      <option value="2">Moyenne priorité</option>
+                      <option value="3">Haute priorité</option>
+                  </select>
+                  </p>
+                </div>
+              </div>      
+              <div class="task">
+                <div class="boxtime">
+                  <span class="picto"><img src="../assets/images/picto-calendar.png" alt="picto-calendar"/></span>
+                <p class="totaltime">Echéance</p>
+                </div>
+                <p class="titleprogramme">
+                  <!-- Echeance -->
+                  <input type="date" v-model="createTaskForm.echeanceTask" placeholder="echeance de la tache">
+                </p>
+              </div>      
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="yellow darken-1"
+                  @click="dialog = false , createTask()"
                 >
-                {{ createTaskForm.nameTask}}
-                </v-text-field>
-              </v-col>
-            <!--  Priorité -->
-              <v-list-group
-                  no-action
-                  sub-group
-                >
-                  <template v-slot:activator>
-                    <v-list-item-content>
-                      <v-list-item-title>Priorité</v-list-item-title>
-                    </v-list-item-content>
-                  </template>
-
-                  <v-list-item
-                    v-for="([title], i) in cruds"
-                    :key="i"
-                    link
-                  >
-                    <v-list-item-title v-text="title"></v-list-item-title>
-
-                  </v-list-item>
-              </v-list-group>
-             <!-- Temps estimé -->
-              <v-list-group
-                      no-action
-                      sub-group
-                    >
-                      <template v-slot:activator>
-                        <v-list-item-content>
-                          <v-list-item-title>Temps estimé</v-list-item-title>
-                        </v-list-item-content>
-                      </template>
-                        <v-time-picker
-                        v-model="time"
-                        dark
-                        class="mt-4"
-                        format="24hr"
-                        scrollable>
-                        </v-time-picker>
-
-              </v-list-group>
-             <!-- Temps réél -->
-              <v-list-group
-                      no-action
-                      sub-group
-                    >
-                      <template v-slot:activator>
-                        <v-list-item-content>
-                          <v-list-item-title>Temps réél</v-list-item-title>
-                        </v-list-item-content>
-                      </template>
-                        <v-time-picker
-                        v-model="time"
-                        dark
-                        class="mt-4"
-                        format="24hr"
-                        scrollable>
-                        </v-time-picker>
-
-              </v-list-group>
-             <!-- Echéance -->
-            <v-list-group
-                no-action
-                sub-group
-              >
-                <template v-slot:activator>
-                  <v-list-item-content>
-                    <v-list-item-title>Echéance</v-list-item-title>
-                  </v-list-item-content>
-                </template>
-               
-                <v-col
-                  cols="12"
-                  lg="12"
-                >
-                  <v-menu
-                    ref="menu1"
-                    v-model="menu1"
-                    :close-on-content-click="false"
-                    transition="scale-transition"
-                    offset-y
-                    max-width="290px"
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="date"
-                        label="Date"
-                        persistent-hint
-                        prepend-icon="mdi-calendar"
-                        v-bind="attrs"
-                        @blur="date = parseDate(dateFormatted)"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="date"
-                      no-title
-                      @input="menu1 = false"
-                    ></v-date-picker>
-                  </v-menu>
-                </v-col>
-
-            </v-list-group>
-             <!-- Rappel -->
-            <v-list-group
-                no-action
-                sub-group
-              >
-                <template v-slot:activator>
-                  <v-list-item-content>
-                    <v-list-item-title>Rappel</v-list-item-title>
-                  </v-list-item-content>
-                </template>
-               
-                <v-col
-                  cols="12"
-                  lg="12"
-                >
-                  <v-menu
-                    ref="menu1"
-                    v-model="menu1"
-                    :close-on-content-click="false"
-                    transition="scale-transition"
-                    offset-y
-                    max-width="290px"
-                    min-width="auto"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-text-field
-                        v-model="date"
-                        label="Date"
-                        persistent-hint
-                        prepend-icon="mdi-calendar"
-                        v-bind="attrs"
-                        @blur="date = parseDate(dateFormatted)"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-date-picker
-                      v-model="date"
-                      no-title
-                      @input="menu1 = false"
-                    ></v-date-picker>
-                  </v-menu>
-                </v-col>
-
-            </v-list-group>         
+                  Enregister
+                </v-btn>
+              </v-card-actions>
+              <!-- <div class="task">
+                <div class="boxtime">
+                  <span class="picto"><img src="../assets/images/picto-dossier-jaune.png" alt="picto-dossier-jaune"/></span>
+                <p class="totaltime">Dossier</p>
+                </div>
+                <p class="titleprogramme">Travail</p>
+              </div>      
+              <div class="task">
+                <div class="boxtime">
+                  <span class="picto"><img src="../assets/images/picto-reveil.png" alt="picto-reveil"/></span>
+                <p class="totaltime">Rappel</p>
+                </div>
+                <p class="totaltime">Aucun</p>
+              </div>      
+              <div class="task">
+                <div class="boxtime">
+                  <span class="picto"><img src="../assets/images/picto-recurrence.png" alt="picto-recurrence"/></span>
+                <p class="totaltime">Récurrence</p>
+                </div>
+                <p class="titleprogramme">Chaque jour</p>
+              </div>
+              <div class="border"></div>  
+              <div class="task">
+                <div class="boxtime">
+                  <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
+                <p class="titleprogramme">Nom de la sous tâche</p>
+                </div>
+              </div>  
+              <div class="border"></div>  
+              <div class="task">
+                <div class="boxtime">
+                  <span class="picto"><img src="../assets/images/picto-add.png" alt="picto-check"/></span>
+                <p class="totaltime">Ajouter une sous tâche</p>
+                </div>
+              </div>  -->
+            </div>
           </v-container>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn
-            color="blue darken-1"
-            text
-            @click="dialog = false"
-          >
-            Close
-          </v-btn>
-          <v-btn
-            color="blue darken-1"
-            text
-            @click="dialog = false , createTask()"
-          >
-            Save
-          </v-btn>
-        </v-card-actions>
       </v-card>
     </v-dialog>
 
@@ -536,7 +404,12 @@
 import { mapState } from 'vuex'
 import moment from 'moment'
 import CommentModal from '@/components/CommentModal'
-
+import {
+    mdiPencil,
+    mdiDelete,
+    mdiClockTimeFive,
+    mdiTimer,
+  } from '@mdi/js'
 
 export default {
   components: {
@@ -546,11 +419,11 @@ export default {
     return {
       createTaskForm: {
         nameTask: '',
-        // priorityTask: '',
-        // timeEstimateTask:'',
-        // timeRealTask:'',
-        // echeanceTask:'',
-        // rappelTask:'',
+        priorityTask: '',
+        timeEstimateTask:'',
+        timeRealTask:'',
+        echeanceTask:'',
+        rappelTask:'',
       },
       showFormulaire: false,
       post: {
@@ -574,30 +447,52 @@ export default {
         ['Faible priorité'],
         ['Pas de priorité'],
       ],
+      currentTask:{},
+      icons: {
+        mdiPencil,
+        mdiDelete,
+        mdiClockTimeFive,
+        mdiTimer
+      },
     }
     },
   computed: {
-    ...mapState(['userProfile', 'posts']),
-
+    ...mapState(['userProfile', 'posts', 'userTask']),
+    // ...mapGetters(['userTask']),
+    
   },
   methods: {
     createTask() {
       console.log('ok bien ajouter');
         this.$store.dispatch('createTaskStore', {
         nameTask: this.createTaskForm.nameTask,
-        // priorityTask: this.createTaskForm.priorityTask,
-        // timeEstimateTask:this.createTaskForm.timeEstimateTask,
-        // timeRealTask:this.createTaskForm.timeRealTask,
-        // echeanceTask:this.createTaskForm.echeanceTask,
-        // rappelTask:this.createTaskForm.rappelTask,
+        priorityTask: this.createTaskForm.priorityTask,
+        timeEstimateTask:this.createTaskForm.timeEstimateTask,
+        timeRealTask:this.createTaskForm.timeRealTask,
+        echeanceTask:this.createTaskForm.echeanceTask,
+        rappelTask:this.createTaskForm.rappelTask,
         })
+    },
+    toggleFormulaire(task){
+      if(task){
+        this.currentTask = task
+        this.createTaskForm.nameTask = task.nameTask
+      }
+      else{
+         this.createTaskForm.nameTask = ""
+      }
+      console.log(task);
+      this.dialog = true
     },
     createPost() {
       this.$store.dispatch('createPost', { content: this.post.content })
       this.post.content = ''
     },
-    toggleFormulaire(){
-      this.dialog = true
+    supprimer(){
+      console.log("effacer");
+       this.$store.dispatch('deleteTaskStore', {
+
+        })
     },
     toggleCommentModal(post) {
       this.showCommentModal = !this.showCommentModal
@@ -646,4 +541,96 @@ export default {
 
 <style lang="scss" scoped>
 
+$error: #ef5777;
+$success: #1abc9c;
+$light: #F5F8FA;
+$medium: #657786;
+$dark: #34495E;
+$white: #fff;
+$rouge: #A90909;
+$bleu: #021F4D;
+$yellow: #FFBE0C;
+$backgroundgrey: #F9F9F7;
+$grey: grey;
+
+
+.toto{
+  font-size: 16px;
+  color: $bleu;
+}
+
+.yellow{
+  color: $yellow;
+}
+    .programme{
+      box-shadow: 10px 10px 20px 0px rgba($dark, 0.3);
+      padding: 30px 20px;
+      border-radius: 10px;
+
+    } 
+
+    .time,.task{
+      display: flex;
+      align-items: center;
+      padding: 10px 0px;
+      justify-content: space-between;
+      align-items: center;
+
+      .boxtime{
+        display: flex;
+      }
+      .boxtime2{
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        margin: 10px 0px;
+        width: 100%;
+
+        .circle{
+          background-color: $yellow;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+       }
+      }
+
+      .titleprogramme{
+        margin-left: 0.8rem;
+        font-size: 12px;
+        font-weight: bold;
+      }
+      .titleprogrammeboxright{
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .totaltime{
+        display: flex;
+        font-size: 12px;
+        opacity: 80%;
+        z-index: 0;
+      }
+
+      .picto{
+        width: 40px;
+        margin-right:  5px;
+      }
+    }
+    .border{
+      border-top: 1px solid $bleu;
+      width: 100%;
+      margin : 20px  0; 
+    }
+
+    .activities{
+      display: flex;
+      justify-content: space-between;
+      max-width: 15rem;
+
+    }
 </style>
+
+
