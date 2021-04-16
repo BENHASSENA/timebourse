@@ -18,7 +18,11 @@ export default {
     showNav() {
       return Object.keys(this.userProfile).length > 1
     }
-  }
+  },
+  // created(){
+  //   this.$store.dispatch('rechercheCookieUser')
+  // }
+
 }
 
 </script>

@@ -28,158 +28,224 @@ const store = new Vuex.Store({
   state: {
     userProfile: {},
     userTask:[],
-    posts: [],
+    userFolder:[],
   },
   mutations: {
-    enregistementUtilisateur(state, val) {
+    enregistrementUtilisateur(state, val) {
       state.userProfile = val
-    },
-    setPosts(state, val) {
-      state.posts = val
     },
     setUserTask(state, val) {
       state.userTask = val
+    },
+    setUserFolder(state, val) {
+      state.userFolder = val
+    },
+    deleteTask(state, id){
+      let taskIndex = state.userTask.findIndex(t=>t.id ==id)
+      state.userTask.splice(taskIndex,1)
     }
 
   },
   actions: {
-    async login({ dispatch, commit }, loginForm) {
+    // rechercheCookieUser({commit}){
+    //   axios.post(url+'/')
+    //   .then(function(response){
+    //     console.log(response);
+    //     commit('enregistrementUtilisateur', response.data);
+    //     axios.post(url+'/usertask',{
+    //       id: response.data._id,
+    //     })
+    //     .then(function(response){
+    //       console.log(response,"tache utilisateur");
+    //       commit ('setUserTask', response.data);
+    //     })
+    //     axios.post(url+'/userfolder',{
+    //       id: response.data._id,
+    //     })
+    //     .then(function(response){
+    //       console.log(response,"dossier utilisateur");
+    //       commit ('setUserFolder', response.data);
+    //     })
+    //     if (router.currentRoute.path === '/connexion') {
+    //       router.push('/')
+    //     }
+    //   })
+    // },
+    login({commit}, loginForm) {
       // const {user} = await fb.auth.signInWithEmailAndPassword(form.email, form.password)
       // // fetch user profile and set in state
       // dispatch('traitementUtilisateur', user)
 
-      axios.post(url+'/connexion', {
+      axios.post(url+'/connexion',{
         email: loginForm.email,
         password: loginForm.password
       })
       .then(function (response) {
-        console.log(response.data._id, "response.data");
-        dispatch('traitementUtilisateur', response.data._id);
+        console.log(response.data, "response.data");
+        commit('enregistrementUtilisateur', response.data);
         axios.post(url+'/usertask',{
           id: response.data._id,
         })
         .then(function(response){
           console.log(response,"tache utilisateur");
           commit ('setUserTask', response.data);
-        });
+        })
+        axios.post(url+'/userfolder',{
+          id: response.data._id,
+        })
+        .then(function(response){
+          console.log(response,"dossier utilisateur");
+          commit ('setUserFolder', response.data);
+        })
+        if (router.currentRoute.path === '/connexion') {
+          router.push('/')
+        }
       })
       .catch(function (error) {
         console.log(error);
       });
 
-    },
-    async traitementUtilisateur({ commit }, user) {
-
-      commit('enregistementUtilisateur', user)
-      
-      // change route to dashboard
-      if (router.currentRoute.path === '/connexion') {
-        router.push('/')
-      }
     },
     signupStore({ dispatch }, form) { 
-      axios.post(url+'/register', {
-        username: form.username,
-        email: form.email,
-        password: form.password
-      })
-      .then(function (response) {
-        console.log(response);
-        dispatch('traitementUtilisateur', response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    
-    },
-    async createTaskStore({ dispatch, state }, createTaskForm) { 
-      createTaskForm.id = state.userProfile._id
-      console.log(createTaskForm)
-
-      axios.post(url+'/addtask', createTaskForm)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      }); 
-    },
-    async deleteTaskStore({dispatch, commit},createTaskForm){
+        axios.post(url+'/register', {
+          username: form.username,
+          email: form.email,
+          password: form.password
+        })
+        .then(function (response) {
+          console.log(response);
+          dispatch('traitementUtilisateur', response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       
-      axios.delete(url+'/delete', {})
-      .then(function (response) {
-        console.log(response, "tache utilisateur");
-        
-      })
-      
-      // commit('setUserTask', {})
-      // router.push('/connexion')
     },
-    async logout({ commit }, loginForm) {
-      // await fb.auth.signOut()
+    createFolderStore({dispatch, state}, createFolderForm){
+      createFolderForm.user_id = state.userProfile._id
+      console.log(createFolderForm)
+      axios.post(url+'/addfolder', createFolderForm)
+        .then(function (response) {
+          console.log(response);
+          dispatch('ajoutDeDossier', response.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        }); 
+    },
+    ajoutDeDossier({state}, nomDuDossier){
+      state.userFolder.push(nomDuDossier)
+    }, 
+    createTaskStore({ dispatch, state }, createTaskForm) { 
+        createTaskForm.user_id = state.userProfile._id
+        console.log(state.userProfile._id)
 
-      // // clear userProfile and redirect to /login
+        axios.post(url+'/addtask', createTaskForm)
+        .then(function (response) {
+          // console.log(response);
+          dispatch('ajoutDeTache', response.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        }); 
+      },
+    ajoutDeTache({state}, tache){
+      state.userTask.push(tache)
+    },    
+    updateTaskStore({dispatch}, updateTask){
+      axios.post(url+'/updateTask', updateTask)
+        .then(function (response) {
+          console.log(response);
+          // console.log(state.userTask);
+          dispatch('updateDeTache', updateTask);
+        })
+        .catch(function (error) {
+          console.log(error);
+        }); 
+    },
+    updateDeTache({state},updateTask){
+      for(var i=0; i<state.userTask.length; i++){
+        // console.log(state.userTask[i]);
+        // console.log(idTache, state.userTask[i]._id);
+        if(updateTask.idtache == state.userTask[i]._id){
+          // console.log("Yes!!");
+          state.userTask[i].nameTask = updateTask.nameTask
+          state.userTask[i].priorityTask = updateTask.priorityTask
+          state.userTask[i].timeEstimateTask = updateTask.timeEstimateTask
+          state.userTask[i].timeRealTask = updateTask.timeRealTask
+          state.userTask[i].echeanceTask = updateTask.echeanceTask
+          state.userTask[i].rappelTask = updateTask.rappelTask
+        }
+      }
+    },
+    updateFolderStore({dispatch}, updateFolder){
+      console.log(updateFolder);
+      axios.post(url+'/updateFolder', updateFolder)
+        .then(function (response) {
+          console.log(response);
+          // console.log(state.userTask);
+          dispatch('updateDeFolder', updateFolder);
+        })
+        .catch(function (error) {
+          console.log(error);
+        }); 
+    },
+    updateDeFolder({state},updateFolder){
+      for(var i=0; i<state.userFolder.length; i++){
+        console.log(state.userTask[i]);
+        // console.log(idTache, state.userTask[i]._id);
+        if(updateFolder.idfolder == state.userFolder[i]._id){
+          // console.log("Yes!!");
+          state.userFolder[i].nameFolder = updateFolder.nameFolder
+        }
+      }
+    },
+    deleteTaskStore({dispatch},id){
+      // console.log(id,"id");
+      axios.delete(url+`/delete/${id}`)
+      .then(function (response) {
+        // console.log(response);
+        // console.log(id, " id2");
+        dispatch('suppressionDeTache', id)
+      })
+    },
+    suppressionDeTache({state},idTache){
+      for(var i=0; i<state.userTask.length; i++){
+        // console.log(state.userTask[i]);
+        // console.log(idTache, state.userTask[i]._id);
+        if(idTache == state.userTask[i]._id){
+          // console.log("Yes!!");
+          state.userTask.splice(i,1)
+        }
+      }
+    },
+    deleteFolderStore({dispatch},id){
+      // console.log(id,"id");
+      axios.delete(url+`/delete/${id}`)
+      .then(function (response) {
+        // console.log(response);
+        // console.log(id, " id2");
+        dispatch('suppressionDeFolder', id)
+      })
+    },
+    suppressionDeFolder({state},idFolder){
+      for(var i=0; i<state.userFolder.length; i++){
+        // console.log(state.userTask[i]);
+        // console.log(idTache, state.userTask[i]._id);
+        if(idFolder == state.userFolder[i]._id){
+          // console.log("Yes!!");
+          state.userFolder.splice(i,1)
+        }
+      }
+    },
+    logout({ commit }, loginForm) {
+            // // clear userProfile and redirect to /login
       axios.post(url+'/logout', {
         
       })
-      commit('enregistementUtilisateur', {})
+      commit('enregistrementUtilisateur', {})
       router.push('/connexion')
     },
-    async createPost({ state, commit }, post) {
-      // await fb.postsCollection.add({
-      //   createdOn: new Date(),
-      //   content: post.content,
-      //   userId: fb.auth.currentUser.uid,
-      //   userName: state.userProfile.name,
-      //   comments: 0,
-      //   likes: 0
-      // })
-    },
-    async likePost ({ commit }, post) {
-      // const userId = fb.auth.currentUser.uid
-      // const docId = `${userId}_${post.id}`
-    
-      // // check if user has liked post
-      // const doc = await fb.likesCollection.doc(docId).get()
-      // if (doc.exists) { return }
-    
-      // // create post
-      // await fb.likesCollection.doc(docId).set({
-      //   postId: post.id,
-      //   userId: userId
-      // })
-    
-      // // update post likes count
-      // fb.postsCollection.doc(post.id).update({
-      //   likes: post.likesCount + 1
-      // })
-    },
-    async updateProfile({ dispatch }, user) {
-      // const userId = fb.auth.currentUser.uid
-      // // update user object
-      // const userRef = await fb.usersCollection.doc(userId).update({
-      //   name: user.name,
-      //   title: user.title
-      // })
-    
-      // dispatch('traitementUtilisateur', { uid: userId })
-    
-      // // update all posts by user
-      // const postDocs = await fb.postsCollection.where('userId', '==', userId).get()
-      // postDocs.forEach(doc => {
-      //   fb.postsCollection.doc(doc.id).update({
-      //     userName: user.name
-      //   })
-      // })
-    
-      // // update all comments by user
-      // const commentDocs = await fb.commentsCollection.where('userId', '==', userId).get()
-      // commentDocs.forEach(doc => {
-      //   fb.commentsCollection.doc(doc.id).update({
-      //     userName: user.name
-      //   })
-      // })
-    }
   },
   
 })

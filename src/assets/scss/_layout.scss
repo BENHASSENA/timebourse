@@ -204,13 +204,13 @@ header {
   }
   
   // dashboard
-  #dashboard {
+  #dashboard, #settings {
     // section {
     //   // padding: 2rem 0;
     // }
 
     .title1{
-      margin-top: 5rem;
+      margin-top: 3rem;
     }
     .title2{
       margin-bottom: 5rem;
@@ -225,11 +225,14 @@ header {
     }
     .containerboard{
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      padding-top: 2%;
       width: 100%;
       background-color: $backgroundgrey;
       margin-top: 2%;
     }
+
+    
 
     .boxleft{
       width: 20%;
@@ -239,7 +242,7 @@ header {
 
     .boxcenter{
       max-width: 100%;
-      margin: 3% 0 ;
+      margin: 3% ;
       width: 40rem;
 
       .priorityred{
@@ -290,6 +293,14 @@ header {
       justify-content: center;
       align-items: center;
     }
+    .programme4{
+      box-shadow: 10px 10px 20px 0px rgba($dark, 0.3);
+      padding: 10px 15px;
+      border-radius: 10px;
+      margin: 0px 0px 20px 0px;
+      justify-content: center;
+      align-items: center;
+    }
 
     .programme3{
       box-shadow: 10px 10px 20px 0px rgba($dark, 0.3);
@@ -328,8 +339,9 @@ header {
 
       .titleprogramme{
         margin-left: 0.8rem;
-        font-size: 12px;
+        font-size: 0.9rem;
         font-weight: bold;
+        text-align: left;
       }
       .titleprogrammeboxright{
         font-size: 14px;
@@ -566,7 +578,7 @@ header {
   
   // settings
   #settings {
-    padding: 2rem 0;
+
   
     .col1 {
       max-width: 600px;

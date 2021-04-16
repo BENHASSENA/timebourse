@@ -1,5 +1,10 @@
 // imports
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+// @import "./../fonts/Aeonik-Air.otf";
+  
+
+
 // @include font-face (Aeonik);
 // colors
 
@@ -21,10 +26,14 @@ body {
 	box-sizing: border-box;
 	color: $dark;
 	// background: #E6ECF0;
-// 	@ font-face {
+// 	@font-face {
 // 		font-family :  "Aeonik" ;
 // 	   	src :  url ( "fonts" ) format ( "otf" );
-//    }
+//    };
+//    @font-face {
+// 	font-family: "Aeonik";
+// 	src: url('./../fonts/Aeonik-Bold.otf');
+// }
    
 }
 
@@ -34,7 +43,7 @@ html {
 }
 
 * {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Yantramanav','Open Sans', sans-serif;
 	box-sizing: border-box;
 	transition: 0.15s;
 
@@ -54,11 +63,13 @@ p {
 }
 
 h1 {
-	font-size: 2rem;
+	font-size: 3rem;
+	font-weight: 900;
 }
 
 h2 {
-	font-size: 1.8rem;
+	font-size: 1.3rem;
+	font-weight: 500;
 }
 
 h3 {
@@ -96,6 +107,7 @@ section {
 	display: flex;
 	max-width: 1200px;
 	margin: 0 auto;
+	justify-content: center;
 	@media screen and (max-width: 742px) {
 		display: block;
 	}
@@ -207,6 +219,7 @@ section {
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	margin-left: 100px;
 
 	li {
 		display: inline-block;
@@ -265,4 +278,12 @@ form {
 .fade-enter,
 .fade-leave-to {
 	opacity: 0;
+}
+
+.navbar-deconnexion{
+	display: flex;
+	justify-content: center;
+	flex-grow: 1;
+	flex-basis: 0;
+	padding: 2rem
 }

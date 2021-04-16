@@ -2,11 +2,11 @@
   <div id="dashboard"> 
     <!-- titre du dashboard -->
     <h1 class="title1">Tableau de bord</h1>
-    <p class="title2">Gestion des tâches</p>
+    <h2 class="title2">Gestion des tâches</h2>
     <!-- barre de navigation du dashboard -->
     <div class="navbaruser">
       <li>
-        <router-link to="/dashboard">
+        <router-link to="/">
           <img src="../assets/images/picto-dashboard.png" alt="picto-dashboard"/>
         </router-link>
       </li>
@@ -79,14 +79,23 @@
             <p class="totaltime">20h</p>
           </div>
           <div class="border"></div>
-          <div class="time">
-            <div class="boxtime2">
+          <div class="time" v-for="folder in userFolder" :key="folder._id" >
+            <div class="boxtime2" >
               <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
-              <p class="titleprogramme">Travail</p>
+
+               <p class="titleprogramme">{{folder.nameFolder}}
+                <!-- <input type="text" v-model="createFolderForm.nameFolder" placeholder="Nom du dossier"> -->
+              </p>
+              <!-- <p class="titleprogramme">{{folder.nameFolder}}</p> -->
+             
             </div>
-            <p class="totaltime">10h</p>
+            <p class="totaltime">
+              <v-icon small  @click="toggleFormFolder(folder.nameFolder)">{{ icons.mdiPencil }}</v-icon>
+              <v-icon small @click="supprimerFolder(folder._id)">{{ icons.mdiDelete }}</v-icon>
+            </p>
+            <!-- <p class="totaltime">10h</p> -->
           </div>
-          <div class="time">
+          <!-- <div class="time">
             <div class="boxtime2">
               <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
               <p class="titleprogramme">Santé</p>
@@ -117,22 +126,25 @@
           <div class="time">
             <div class="boxtime2">
               <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
-              <p class="titleprogramme">Maison</p>
+              <p class="titleprogramme"></p>
             </div>
             <p class="totaltime">6h</p>
-          </div>
+          </div> -->
           <div class="time">
             <div class="boxtime2">
-              <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
-              <p class="titleprogramme">Sommeil</p>
+              <span class="circle"><img src="../assets/images/picto-dossier-ajout.png" alt="picto-dossier-ajout"/></span>
+              <p class="totaltime"><a @click="toggleFormFolder()">Ajouter un dossier</a></p>
+              <!-- <p class="titleprogramme">
+                <input type="text" v-model="createFolderForm.nameFolder" placeholder="Nom du dossier">
+              </p> -->
+              
             </div>
-            <p class="totaltime">10h</p>
           </div>
         </div>
       </div>
 
       <div class="boxcenter">
-        <div class="programme2">
+        <div class="programme4">
           <div class="task">
             <div class="boxtime">
               <span class="picto"><img src="../assets/images/picto-add.png" alt="picto-check"/></span>
@@ -144,22 +156,22 @@
         <div class="titlepriority">
           <p class="priorityred">Mes tâches</p>   
         </div>
-        <div  v-for="(task, i) in userTask" :key="i" class="programme2">
+        <div  v-for="task in userTask" :key="task._id" class="programme2">
           <div class="task">
             <div class="boxtime">
               <span class="picto"><img src="../assets/images/picto-check.png" alt="picto-check"/></span>
               <p class="titleprogramme">{{task.nameTask}}</p>
             </div>
             <p class="totaltime">
-            <v-icon @click="toggleFormulaire(task)">{{ icons.mdiPencil }}</v-icon>
-            <v-icon @click="supprimer()">{{ icons.mdiDelete }}</v-icon>
+            <v-icon small  @click="toggleFormulaire(task)">{{ icons.mdiPencil }}</v-icon>
+            <v-icon small  @click="supprimer(task._id)">{{ icons.mdiDelete }}</v-icon>
             </p>
           </div>
         </div>
 
       </div>
 
-      <div class="boxright">
+      <!-- <div class="boxright">
         <div class="programme">
           <div class="task">
             <div class="boxtime">
@@ -232,70 +244,14 @@
             </div>
           </div> 
         </div>
-      </div>
+      </div> -->
     </div>
     <!-- utilisation du composant Componantmodal -->
     <transition name="fade">
       <CommentModal v-if="showCommentModal" :post="selectedPost" @close="toggleCommentModal()"></CommentModal>
     </transition>
-    <!-- creation d'un post -->
-    <section>
-      <div class="col1">
-        <div class="profile">
-          <h5>{{ userProfile.name }}</h5>
-          <p>{{ userProfile.title }}</p>
-          <div class="create-post">
-            <p>create a post</p>
-            <form @submit.prevent>
-              <textarea v-model.trim="post.content"> hello</textarea>
-              <button @click="createPost()" :disabled="post.content === ''" class="button">post</button>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div class="col2">
-        <div v-if="posts.length">
-          <div v-for="post in posts" :key="post.id" class="post">
-            <h5>{{ post.userName }}</h5>
-            <span>{{ post.createdOn | formatDate }}</span>
-            <p>{{ post.content | trimLength }}</p>
-            <ul>
-              <li><a @click="toggleCommentModal(post)">comments {{ post.comments }}</a></li>
-              <li><a @click="likePost(post.id, post.likes)">likes {{ post.likes }}</a></li>
-              <li><a @click="viewPost(post)">view full post</a></li>
-            </ul>
-              </div>
-            </div>
-            <div v-else>
-          <p class="no-results">There are currently no posts</p>
-        </div>
-      </div>
-    </section>
-    <!-- full post modal -->
-    <transition name="fade">
-      <div v-if="showPostModal" class="p-modal">
-        <div class="p-container">
-          <a @click="closePostModal()" class="close">close</a>
-          <div class="post">
-            <h5>{{ fullPost.userName }}</h5>
-            <span>{{ fullPost.createdOn | formatDate }}</span>
-            <p>{{ fullPost.content }}</p>
-            <ul>
-              <li><a>comments {{ fullPost.comments }}</a></li>
-              <li><a>likes {{ fullPost.likes }}</a></li>
-            </ul>
-          </div>
-          <div v-show="postComments.length" class="comments">
-            <div v-for="comment in postComments" :key="comment.id" class="comment">
-              <p>{{ comment.userName }}</p>
-              <span>{{ comment.createdOn | formatDate }}</span>
-              <p>{{ comment.content }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition>
-    <!-- formulaire de la pop up -->
+
+    <!-- formulaire ajout de tache -->
     <v-dialog
             v-model="dialog"
             max-width="600px"
@@ -305,7 +261,7 @@
             <div class="programme">
               <div class="task">
                 <div class="boxtime">
-                  <span class="picto"><input type="checkbox"></span>
+                  <span class="picto"> <img src="../assets/images/picto-add.png" alt="picto-add"/></span>
                   <p class="titleprogrammeboxright">          
                   <!-- Nom de la tâche -->
                   <input class="toto" type="text" v-model="createTaskForm.nameTask" placeholder="Nom de la tache"></p>
@@ -396,6 +352,35 @@
           </v-container>
       </v-card>
     </v-dialog>
+        <!-- formulaire ajout de dossier -->
+    <v-dialog
+            v-model="dialogFolder"
+            max-width="600px"
+    >
+      <v-card>
+          <v-container>
+            <div class="programme">
+              <div class="task">
+                <div class="boxtime">
+                  <span class="picto"> <img src="../assets/images/picto-add.png" alt="picto-add"/></span>
+                  <p class="titleprogrammeboxright">          
+                  <!-- Nom de la tâche -->
+                  <input class="toto" type="text" v-model="createTaskForm.nameTask" placeholder="Nom du dossier"></p>
+                </div>
+              </div>           
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="yellow darken-1"
+                  @click="dialogFolder = false , createFolder()"
+                >
+                  Enregister
+                </v-btn>
+              </v-card-actions>
+            </div>
+          </v-container>
+      </v-card>
+    </v-dialog>
 
   </div>
 </template>
@@ -417,6 +402,9 @@ export default {
   },
   data() {
     return {
+      createFolderForm:{
+        nameFolder:'',
+      },
       createTaskForm: {
         nameTask: '',
         priorityTask: '',
@@ -435,6 +423,7 @@ export default {
       fullPost: {},
       postComments: [],
       dialog: false,
+      dialogFolder:false,
       time: '',
       menu1:'',
       date:'',
@@ -447,52 +436,102 @@ export default {
         ['Faible priorité'],
         ['Pas de priorité'],
       ],
-      currentTask:{},
+      currentTask:null,
       icons: {
         mdiPencil,
         mdiDelete,
         mdiClockTimeFive,
         mdiTimer
       },
+    
     }
     },
   computed: {
-    ...mapState(['userProfile', 'posts', 'userTask']),
+    ...mapState(['userProfile', 'posts', 'userTask', 'userFolder']),
     // ...mapGetters(['userTask']),
     
   },
   methods: {
-    createTask() {
-      console.log('ok bien ajouter');
-        this.$store.dispatch('createTaskStore', {
-        nameTask: this.createTaskForm.nameTask,
-        priorityTask: this.createTaskForm.priorityTask,
-        timeEstimateTask:this.createTaskForm.timeEstimateTask,
-        timeRealTask:this.createTaskForm.timeRealTask,
-        echeanceTask:this.createTaskForm.echeanceTask,
-        rappelTask:this.createTaskForm.rappelTask,
+    createFolder(){
+      console.log('dossier bien ajouter');
+      // this.$store.dispatch('createFolderStore', {
+      //   nameFolder: this.createFolderForm.nameFolder,
+      // })
+
+      //Si je n'ai pas de tache en cours, je lance la fonction createTaskStore
+      if(!this.currentFolder){
+        this.$store.dispatch('createFolderStore', {
+          nameFolder: this.createFolderForm.nameTask,
+        
         })
+      //Sinon je lance la fonction updateTaskStore
+      }else{
+        // console.log('je passe ici', this.currentTask)
+        this.$store.dispatch('updateFolderStore', {
+          idfolder: this.currentFolder._id,
+          nameFolder: this.createFolderForm.nameFolder,
+        })
+      }
+    },
+        toggleFormFolder(folder){
+      console.log('toggleFormFolder')
+       if(folder){
+        this.currentFolder = folder
+        this.createFolderForm.nameFolder = folder.nameFolder
+      }
+      else{
+        this.createFolderForm.nameFolder = ""
+        this.nameFolder = null
+      }
+      console.log(folder);
+      this.dialogFolder = true
+    },
+    createTask(){
+      console.log('ok bien ajouter');
+      //Si je n'ai pas de tache en cours, je lance la fonction createTaskStore
+      if(!this.currentTask){
+        this.$store.dispatch('createTaskStore', {
+          nameTask: this.createTaskForm.nameTask,
+          priorityTask: this.createTaskForm.priorityTask,
+          timeEstimateTask:this.createTaskForm.timeEstimateTask,
+          timeRealTask:this.createTaskForm.timeRealTask,
+          echeanceTask:this.createTaskForm.echeanceTask,
+          rappelTask:this.createTaskForm.rappelTask,
+        })
+      //Sinon je lance la fonction updateTaskStore
+      }else{
+        // console.log('je passe ici', this.currentTask)
+        this.$store.dispatch('updateTaskStore', {
+          idtache: this.currentTask._id,
+          nameTask: this.createTaskForm.nameTask,
+          priorityTask: this.createTaskForm.priorityTask,
+          timeEstimateTask:this.createTaskForm.timeEstimateTask,
+          timeRealTask:this.createTaskForm.timeRealTask,
+          echeanceTask:this.createTaskForm.echeanceTask,
+          rappelTask:this.createTaskForm.rappelTask,
+        })
+      }
     },
     toggleFormulaire(task){
+      console.log(task,'toggleFormulaire')
       if(task){
         this.currentTask = task
         this.createTaskForm.nameTask = task.nameTask
       }
       else{
-         this.createTaskForm.nameTask = ""
+        this.createTaskForm.nameTask = ""
+        this.currentTask = null
       }
       console.log(task);
       this.dialog = true
     },
-    createPost() {
-      this.$store.dispatch('createPost', { content: this.post.content })
-      this.post.content = ''
+    supprimer(id){
+      console.log(id);
+      this.$store.dispatch('deleteTaskStore', id)
     },
-    supprimer(){
-      console.log("effacer");
-       this.$store.dispatch('deleteTaskStore', {
-
-        })
+    supprimerFolder(id){
+      // console.log(id);
+      this.$store.dispatch('deleteFolderStore', id)
     },
     toggleCommentModal(post) {
       this.showCommentModal = !this.showCommentModal
@@ -503,21 +542,6 @@ export default {
       } else {
         this.selectedPost = {}
       }
-    },
-    likePost(id, likesCount) {
-      this.$store.dispatch('likePost', { id, likesCount })
-    },
-    async viewPost(post) {
-      // const docs = await commentsCollection.where('postId', '==', post.id).get()
-
-      // docs.forEach(doc => {
-      //   let comment = doc.data()
-      //   comment.id = doc.id
-      //   this.postComments.push(comment)
-      // })
-
-      // this.fullPost = post
-      // this.showPostModal = true
     },
     closePostModal() {
       this.postComments = []
@@ -563,9 +587,9 @@ $grey: grey;
   color: $yellow;
 }
     .programme{
-      box-shadow: 10px 10px 20px 0px rgba($dark, 0.3);
+      // box-shadow: 10px 10px 20px 0px rgba($dark, 0.3);
       padding: 30px 20px;
-      border-radius: 10px;
+      // border-radius: 10px;
 
     } 
 
