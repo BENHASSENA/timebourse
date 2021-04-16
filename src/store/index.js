@@ -123,10 +123,10 @@ const store = new Vuex.Store({
     },
     createFolderStore({dispatch, state}, createFolderForm){
       createFolderForm.user_id = state.userProfile._id
-      console.log(createFolderForm)
+      // console.log(createFolderForm,"coucou")
       axios.post(url+'/addfolder', createFolderForm)
         .then(function (response) {
-          console.log(response);
+          // console.log(response);
           dispatch('ajoutDeDossier', response.data);
         })
         .catch(function (error) {
@@ -148,7 +148,7 @@ const store = new Vuex.Store({
         .catch(function (error) {
           console.log(error);
         }); 
-      },
+    },
     ajoutDeTache({state}, tache){
       state.userTask.push(tache)
     },    
@@ -230,7 +230,7 @@ const store = new Vuex.Store({
     },
     suppressionDeFolder({state},idFolder){
       for(var i=0; i<state.userFolder.length; i++){
-        // console.log(state.userTask[i]);
+        // console.log(state.userFolder[i], "console log suppression de folder");
         // console.log(idTache, state.userTask[i]._id);
         if(idFolder == state.userFolder[i]._id){
           // console.log("Yes!!");

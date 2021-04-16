@@ -79,22 +79,7 @@
             <p class="totaltime">20h</p>
           </div>
           <div class="border"></div>
-          <div class="time" v-for="folder in userFolder" :key="folder._id" >
-            <div class="boxtime2" >
-              <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
 
-               <p class="titleprogramme">{{folder.nameFolder}}
-                <!-- <input type="text" v-model="createFolderForm.nameFolder" placeholder="Nom du dossier"> -->
-              </p>
-              <!-- <p class="titleprogramme">{{folder.nameFolder}}</p> -->
-             
-            </div>
-            <p class="totaltime">
-              <v-icon small  @click="toggleFormFolder(folder.nameFolder)">{{ icons.mdiPencil }}</v-icon>
-              <v-icon small @click="supprimerFolder(folder._id)">{{ icons.mdiDelete }}</v-icon>
-            </p>
-            <!-- <p class="totaltime">10h</p> -->
-          </div>
           <!-- <div class="time">
             <div class="boxtime2">
               <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
@@ -139,6 +124,17 @@
               </p> -->
               
             </div>
+          </div>
+          <div class="time" v-for="folder in userFolder" :key="folder._id" >
+            <div class="boxtime2" >
+              <span class="circle"><img src="../assets/images/picto-dossier.png" alt="picto-dossier"/></span>
+              <p class="titleprogramme" >{{folder.nameFolder}}</p>
+            </div>
+            <p class="totaltime">
+              <v-icon small  @click="toggleFormFolder(folder)">{{ icons.mdiPencil }}</v-icon>
+              <v-icon small @click="supprimerFolder(folder._id)">{{ icons.mdiDelete }}</v-icon>
+            </p>
+            <!-- <p class="totaltime">10h</p> -->
           </div>
         </div>
       </div>
@@ -365,7 +361,7 @@
                   <span class="picto"> <img src="../assets/images/picto-add.png" alt="picto-add"/></span>
                   <p class="titleprogrammeboxright">          
                   <!-- Nom de la tâche -->
-                  <input class="toto" type="text" v-model="createTaskForm.nameTask" placeholder="Nom du dossier"></p>
+                  <input class="toto" type="text" v-model="createFolderForm.nameFolder" placeholder="Nom du dossier"></p>
                 </div>
               </div>           
               <v-card-actions>
@@ -453,18 +449,17 @@ export default {
   },
   methods: {
     createFolder(){
-      console.log('dossier bien ajouter');
+      // console.log('dossier bien ajouter');
       // this.$store.dispatch('createFolderStore', {
       //   nameFolder: this.createFolderForm.nameFolder,
       // })
 
-      //Si je n'ai pas de tache en cours, je lance la fonction createTaskStore
+      // Si je n'ai pas de dossier en cours, je lance la fonction createFolderStore
       if(!this.currentFolder){
         this.$store.dispatch('createFolderStore', {
-          nameFolder: this.createFolderForm.nameTask,
-        
+          nameFolder: this.createFolderForm.nameFolder,
         })
-      //Sinon je lance la fonction updateTaskStore
+      //Sinon je lance la fonction updateFormStore
       }else{
         // console.log('je passe ici', this.currentTask)
         this.$store.dispatch('updateFolderStore', {
@@ -473,7 +468,7 @@ export default {
         })
       }
     },
-        toggleFormFolder(folder){
+    toggleFormFolder(folder){
       console.log('toggleFormFolder')
        if(folder){
         this.currentFolder = folder
@@ -526,7 +521,7 @@ export default {
       this.dialog = true
     },
     supprimer(id){
-      console.log(id);
+      // console.log(id);
       this.$store.dispatch('deleteTaskStore', id)
     },
     supprimerFolder(id){
