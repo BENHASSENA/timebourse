@@ -131,7 +131,7 @@
               <p class="titleprogramme" >{{folder.nameFolder}}</p>
             </div>
             <p class="totaltime">
-              <v-icon small  @click="toggleFormFolder(folder)">{{ icons.mdiPencil }}</v-icon>
+              <v-icon small @click="toggleFormFolder(folder)">{{ icons.mdiPencil }}</v-icon>
               <v-icon small @click="supprimerFolder(folder._id)">{{ icons.mdiDelete }}</v-icon>
             </p>
             <!-- <p class="totaltime">10h</p> -->
@@ -281,11 +281,13 @@
                 </div>
                 <div class="boxtime">
                   <p class="totaltime">
-                    <select class="totaltime" v-model="createTaskForm.priorityTask"  id="priority">
-                      <option value="">Pas de priorité</option>
-                      <option value="1">Faible priorité</option>
-                      <option value="2">Moyenne priorité</option>
-                      <option value="3">Haute priorité</option>
+                    <!-- <v-select v-model="selected" :options="['Haute priorité', 'Moyenne priorité','Faible priorité','Pas de priorité']"></v-select> -->
+                    
+                  <select class="totaltime" v-model="createTaskForm.priorityTask"  id="priority">
+                    <option>Pas de priorité</option>
+                    <option>Faible priorité</option>
+                    <option>Moyenne priorité</option>
+                    <option>Haute priorité</option>
                   </select>
                   </p>
                 </div>
@@ -299,6 +301,20 @@
                   <!-- Echeance -->
                   <input type="date" v-model="createTaskForm.echeanceTask" placeholder="echeance de la tache">
                 </p>
+              </div>   
+              <div class="task">
+                <div class="boxtime">
+                  <!-- Priorité -->
+                  <span class="picto"><img src="../assets/images/picto-dossier-jaune.png" alt="picto-dossier-jaune"/></span>
+                <p class="totaltime">Dossier</p>
+                </div>
+                <div class="boxtime">
+                  <p class="totaltime">
+                    <select class="totaltime" v-model="createTaskForm.folderTask"> //l'info ds v-model correspond à une liste de tous les dossiers
+                      <option v-for="folder in userFolder" :key="folder._id">{{folder.nameFolder}}</option>
+                    </select>
+                  </p>
+                </div>
               </div>      
               <v-card-actions>
                 <v-spacer></v-spacer>
@@ -358,7 +374,7 @@
             <div class="programme">
               <div class="task">
                 <div class="boxtime">
-                  <span class="picto"> <img src="../assets/images/picto-add.png" alt="picto-add"/></span>
+                  <span class="picto"> <img src="../assets/images/picto-dossier-jaune.png" alt="picto-jaune"/></span>
                   <p class="titleprogrammeboxright">          
                   <!-- Nom de la tâche -->
                   <input class="toto" type="text" v-model="createFolderForm.nameFolder" placeholder="Nom du dossier"></p>
@@ -408,6 +424,7 @@ export default {
         timeRealTask:'',
         echeanceTask:'',
         rappelTask:'',
+        folderTask:'',
       },
       showFormulaire: false,
       post: {
@@ -469,7 +486,7 @@ export default {
       }
     },
     toggleFormFolder(folder){
-      console.log('toggleFormFolder')
+      // console.log('toggleFormFolder')
        if(folder){
         this.currentFolder = folder
         this.createFolderForm.nameFolder = folder.nameFolder
@@ -482,7 +499,7 @@ export default {
       this.dialogFolder = true
     },
     createTask(){
-      console.log('ok bien ajouter');
+      // console.log('ok bien ajouter');
       //Si je n'ai pas de tache en cours, je lance la fonction createTaskStore
       if(!this.currentTask){
         this.$store.dispatch('createTaskStore', {
@@ -492,6 +509,7 @@ export default {
           timeRealTask:this.createTaskForm.timeRealTask,
           echeanceTask:this.createTaskForm.echeanceTask,
           rappelTask:this.createTaskForm.rappelTask,
+          folderTask:this.createTaskForm.folderTask
         })
       //Sinon je lance la fonction updateTaskStore
       }else{
@@ -504,11 +522,12 @@ export default {
           timeRealTask:this.createTaskForm.timeRealTask,
           echeanceTask:this.createTaskForm.echeanceTask,
           rappelTask:this.createTaskForm.rappelTask,
+          folderId: this.createTaskForm.folderTask,
         })
       }
     },
     toggleFormulaire(task){
-      console.log(task,'toggleFormulaire')
+      // console.log(task,'toggleFormulaire')
       if(task){
         this.currentTask = task
         this.createTaskForm.nameTask = task.nameTask
@@ -517,7 +536,7 @@ export default {
         this.createTaskForm.nameTask = ""
         this.currentTask = null
       }
-      console.log(task);
+      // console.log(task);
       this.dialog = true
     },
     supprimer(id){

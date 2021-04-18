@@ -47,30 +47,7 @@ const store = new Vuex.Store({
 
   },
   actions: {
-    // rechercheCookieUser({commit}){
-    //   axios.post(url+'/')
-    //   .then(function(response){
-    //     console.log(response);
-    //     commit('enregistrementUtilisateur', response.data);
-    //     axios.post(url+'/usertask',{
-    //       id: response.data._id,
-    //     })
-    //     .then(function(response){
-    //       console.log(response,"tache utilisateur");
-    //       commit ('setUserTask', response.data);
-    //     })
-    //     axios.post(url+'/userfolder',{
-    //       id: response.data._id,
-    //     })
-    //     .then(function(response){
-    //       console.log(response,"dossier utilisateur");
-    //       commit ('setUserFolder', response.data);
-    //     })
-    //     if (router.currentRoute.path === '/connexion') {
-    //       router.push('/')
-    //     }
-    //   })
-    // },
+
     login({commit}, loginForm) {
       // const {user} = await fb.auth.signInWithEmailAndPassword(form.email, form.password)
       // // fetch user profile and set in state
@@ -81,20 +58,20 @@ const store = new Vuex.Store({
         password: loginForm.password
       })
       .then(function (response) {
-        console.log(response.data, "response.data");
+        // console.log(response.data, "response.data");
         commit('enregistrementUtilisateur', response.data);
         axios.post(url+'/usertask',{
           id: response.data._id,
         })
         .then(function(response){
-          console.log(response,"tache utilisateur");
+          // console.log(response,"tache utilisateur");
           commit ('setUserTask', response.data);
         })
         axios.post(url+'/userfolder',{
           id: response.data._id,
         })
         .then(function(response){
-          console.log(response,"dossier utilisateur");
+          // console.log(response,"dossier utilisateur");
           commit ('setUserFolder', response.data);
         })
         if (router.currentRoute.path === '/connexion') {
@@ -123,10 +100,10 @@ const store = new Vuex.Store({
     },
     createFolderStore({dispatch, state}, createFolderForm){
       createFolderForm.user_id = state.userProfile._id
-      // console.log(createFolderForm,"coucou")
+      console.log(createFolderForm,"coucou")
       axios.post(url+'/addfolder', createFolderForm)
         .then(function (response) {
-          // console.log(response);
+          console.log(response.data._id, "id du dossier");
           dispatch('ajoutDeDossier', response.data);
         })
         .catch(function (error) {
@@ -135,10 +112,11 @@ const store = new Vuex.Store({
     },
     ajoutDeDossier({state}, nomDuDossier){
       state.userFolder.push(nomDuDossier)
+      // console.log(nomDuDossier,"nomDuDossier");
     }, 
     createTaskStore({ dispatch, state }, createTaskForm) { 
         createTaskForm.user_id = state.userProfile._id
-        console.log(state.userProfile._id)
+        // console.log(state.userProfile._id)
 
         axios.post(url+'/addtask', createTaskForm)
         .then(function (response) {
@@ -175,11 +153,13 @@ const store = new Vuex.Store({
           state.userTask[i].timeRealTask = updateTask.timeRealTask
           state.userTask[i].echeanceTask = updateTask.echeanceTask
           state.userTask[i].rappelTask = updateTask.rappelTask
+          state.userTask[i].folderId = updateTask.folderId
+          console.log(updateTask.folderId, "dossier normalement mis à jour");
         }
       }
     },
     updateFolderStore({dispatch}, updateFolder){
-      console.log(updateFolder);
+      // console.log(updateFolder);
       axios.post(url+'/updateFolder', updateFolder)
         .then(function (response) {
           console.log(response);
@@ -192,12 +172,13 @@ const store = new Vuex.Store({
     },
     updateDeFolder({state},updateFolder){
       for(var i=0; i<state.userFolder.length; i++){
-        console.log(state.userTask[i]);
+        console.log(state.userFolder[i], "dossier utilisateur en cours");
         // console.log(idTache, state.userTask[i]._id);
         if(updateFolder.idfolder == state.userFolder[i]._id){
-          // console.log("Yes!!");
+          // state.userFolder[i].idfolder = updateFolder.idfolder
           state.userFolder[i].nameFolder = updateFolder.nameFolder
         }
+        
       }
     },
     deleteTaskStore({dispatch},id){
