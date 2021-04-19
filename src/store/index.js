@@ -227,7 +227,7 @@ const store = new Vuex.Store({
       .then(()=>{
         console.log('LOGGED OUT')
         commit('enregistrementUtilisateur', {})
-        // router.push('/connexion')
+        router.push('/connexion')
       })
     },
   },
