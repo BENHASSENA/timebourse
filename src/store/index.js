@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import router from '../router/index'
 import axios from 'axios'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -25,6 +26,7 @@ Vue.use(Vuex)
 const url = 'http://localhost:8000/api/user';
 
 const store = new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
     userProfile: {},
     userTask:[],
@@ -56,7 +58,7 @@ const store = new Vuex.Store({
       axios.post(url+'/connexion',{
         email: loginForm.email,
         password: loginForm.password
-      })
+      }, { withCredentials: true})
       .then(function (response) {
         // console.log(response.data, "response.data");
         commit('enregistrementUtilisateur', response.data);
@@ -219,13 +221,14 @@ const store = new Vuex.Store({
         }
       }
     },
-    logout({ commit }, loginForm) {
-            // // clear userProfile and redirect to /login
-      axios.post(url+'/logout', {
-        
+    logout({ commit }) {
+      // // clear userProfile and redirect to /login
+      axios.post(url+'/logout', {withCredentials:true})
+      .then(()=>{
+        console.log('LOGGED OUT')
+        commit('enregistrementUtilisateur', {})
+        router.push('/connexion')
       })
-      commit('enregistrementUtilisateur', {})
-      router.push('/connexion')
     },
   },
   
