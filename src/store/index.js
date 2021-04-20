@@ -185,7 +185,7 @@ const store = new Vuex.Store({
     },
     deleteTaskStore({dispatch},id){
       // console.log(id,"id");
-      axios.delete(url+`/delete/${id}`)
+      axios.delete(url+`/task/delete/${id}`)
       .then(function (response) {
         // console.log(response);
         // console.log(id, " id2");
@@ -204,7 +204,7 @@ const store = new Vuex.Store({
     },
     deleteFolderStore({dispatch},id){
       // console.log(id,"id");
-      axios.delete(url+`/delete/${id}`)
+      axios.delete(url+`/folder/delete/${id}`)
       .then(function (response) {
         // console.log(response);
         // console.log(id, " id2");
