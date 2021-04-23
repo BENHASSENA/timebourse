@@ -21,7 +21,7 @@
           </div>
           <button @click="login()" class="button">Connexion</button>
           <div class="extras">
-            <a @click="togglePasswordReset()">Mot de passe oublié</a>
+            <!-- <a @click="togglePasswordReset()">Mot de passe oublié</a> -->
             <a @click="toggleForm()">Créer un compte</a>
           </div>
         </form>

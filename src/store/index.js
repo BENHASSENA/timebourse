@@ -42,19 +42,14 @@ const store = new Vuex.Store({
     setUserFolder(state, val) {
       state.userFolder = val
     },
-    deleteTask(state, id){
-      let taskIndex = state.userTask.findIndex(t=>t.id ==id)
-      state.userTask.splice(taskIndex,1)
-    }
+    // deleteTask(state, id){
+    //   let taskIndex = state.userTask.findIndex(t=>t.id ==id)
+    //   state.userTask.splice(taskIndex,1)
+    // }
 
   },
   actions: {
-
     login({commit}, loginForm) {
-      // const {user} = await fb.auth.signInWithEmailAndPassword(form.email, form.password)
-      // // fetch user profile and set in state
-      // dispatch('traitementUtilisateur', user)
-
       axios.post(url+'/connexion',{
         email: loginForm.email,
         password: loginForm.password
@@ -185,9 +180,9 @@ const store = new Vuex.Store({
     },
     deleteTaskStore({dispatch},id){
       // console.log(id,"id");
-      axios.delete(url+`/delete/${id}`)
+      axios.delete(url+`/task/delete/${id}`)
       .then(function (response) {
-        // console.log(response);
+        console.log(response);
         // console.log(id, " id2");
         dispatch('suppressionDeTache', id)
       })
@@ -204,7 +199,7 @@ const store = new Vuex.Store({
     },
     deleteFolderStore({dispatch},id){
       // console.log(id,"id");
-      axios.delete(url+`/delete/${id}`)
+      axios.delete(url+`/folder/delete/${id}`)
       .then(function (response) {
         // console.log(response);
         // console.log(id, " id2");

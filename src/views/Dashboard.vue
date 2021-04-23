@@ -118,11 +118,7 @@
           <div class="time">
             <div class="boxtime2">
               <span class="circle"><img src="../assets/images/picto-dossier-ajout.png" alt="picto-dossier-ajout"/></span>
-              <p class="totaltime"><a @click="toggleFormFolder()">Ajouter un dossier</a></p>
-              <!-- <p class="titleprogramme">
-                <input type="text" v-model="createFolderForm.nameFolder" placeholder="Nom du dossier">
-              </p> -->
-              
+              <p class="totaltime"><a @click="toggleFormFolder()">Ajouter un dossier</a></p>              
             </div>
           </div>
           <div class="time" v-for="folder in userFolder" :key="folder._id" >
@@ -134,7 +130,6 @@
               <v-icon small @click="toggleFormFolder(folder)">{{ icons.mdiPencil }}</v-icon>
               <v-icon small @click="supprimerFolder(folder._id)">{{ icons.mdiDelete }}</v-icon>
             </p>
-            <!-- <p class="totaltime">10h</p> -->
           </div>
         </div>
       </div>
@@ -164,7 +159,6 @@
             </p>
           </div>
         </div>
-
       </div>
 
       <!-- <div class="boxright">
@@ -427,19 +421,16 @@ export default {
         folderTask:'',
       },
       showFormulaire: false,
-      post: {
-        content: ''
-      },
-      showCommentModal: false,
-      selectedPost: {},
-      showPostModal: false,
-      fullPost: {},
-      postComments: [],
       dialog: false,
       dialogFolder:false,
       time: '',
       menu1:'',
       date:'',
+      showCommentModal: false,
+      selectedPost: {},
+      showPostModal: false,
+      fullPost: {},
+      postComments: [],
       admins: [
         ['Settings', 'mdi-cog-outline'],
       ],
@@ -459,11 +450,11 @@ export default {
     
     }
     },
+
   computed: {
-    ...mapState(['userProfile', 'posts', 'userTask', 'userFolder']),
-    // ...mapGetters(['userTask']),
-    
+    ...mapState(['userProfile',  'userTask', 'userFolder'])   
   },
+
   methods: {
     createFolder(){
       // console.log('dossier bien ajouter');
