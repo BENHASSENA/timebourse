@@ -31,7 +31,6 @@
             <label for="username"></label>
             <input v-model.trim="signupForm.username" type="text" placeholder="Nom ou Pseudo" id="username" />
           </div>
-
           <div>
             <label for="email2"></label>
             <input v-model.trim="signupForm.email" type="text" placeholder="Adresse mail" id="email2" />
@@ -49,13 +48,13 @@
 </template>
 
 <script>
-import PasswordReset from '@/components/PasswordReset'
+
+
 
 export default {
-  components: {
-    PasswordReset
-  },
+
   data() {
+  
     return {
       showLoginForm: true,
       showPasswordReset: false,

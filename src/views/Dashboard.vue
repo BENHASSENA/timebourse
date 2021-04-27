@@ -6,7 +6,7 @@
     <!-- barre de navigation du dashboard -->
     <div class="navbaruser">
       <li>
-        <router-link to="/">
+        <router-link to="/dashboard">
           <img src="../assets/images/picto-dashboard.png" alt="picto-dashboard"/>
         </router-link>
       </li>
@@ -37,12 +37,12 @@
       </li>
       <li>
         <router-link to="/compte">
-          <img class="en-cours" src="../assets/images/picto-compte.png" alt="picto-compte"/>
+          <img src="../assets/images/picto-compte.png" alt="picto-compte"/>
         </router-link>
       </li>
       <li>
         <router-link to="/settings">
-          <img class="en-cours" src="../assets/images/picto-settings.png" alt="picto-settings"/>
+          <img src="../assets/images/picto-settings.png" alt="picto-settings"/>
         </router-link>
       </li>
     </div>
@@ -305,7 +305,7 @@
                 <div class="boxtime">
                   <p class="totaltime">
                     <select class="totaltime" v-model="createTaskForm.folderTask"> //l'info ds v-model correspond à une liste de tous les dossiers
-                      <option v-for="folder in userFolder" :key="folder._id">{{folder.nameFolder}}</option>
+                      <option v-for="folder in userFolder" :key="folder._id" >{{folder.nameFolder}}</option>
                     </select>
                   </p>
                 </div>
@@ -492,6 +492,8 @@ export default {
     createTask(){
       // console.log('ok bien ajouter');
       //Si je n'ai pas de tache en cours, je lance la fonction createTaskStore
+      console.log(this.createTaskForm.folderTask)
+      console.log(this.createTaskForm.priorityTask)
       if(!this.currentTask){
         this.$store.dispatch('createTaskStore', {
           nameTask: this.createTaskForm.nameTask,
@@ -519,9 +521,17 @@ export default {
     },
     toggleFormulaire(task){
       // console.log(task,'toggleFormulaire')
+      
       if(task){
+        console.log(task.folderTask)
         this.currentTask = task
         this.createTaskForm.nameTask = task.nameTask
+        this.createTaskForm.priorityTask = task.priorityTask
+        this.createTaskForm.timeEstimateTask = task.timeEstimateTask
+        this.createTaskForm.timeRealTask = task.timeRealTask
+        this.createTaskForm.echeanceTask = task.echeanceTask
+        this.createTaskForm.rappelTask = task.rappelTask
+        this.createTaskForm.folderTask = task.folderTask
       }
       else{
         this.createTaskForm.nameTask = ""

@@ -2,7 +2,7 @@
   <header>
     <section>
       <div class="navbar-deconnexion">
-        <router-link to="/">
+        <router-link to="/dashboard">
            <img src="../assets/images/logo-timebourse-red.png" alt="logo" height="50px"/>
         </router-link>
         <ul class="inline">
@@ -29,3 +29,10 @@ export default {
 }
 
 </script>
+
+<style lang="scss" scoped>
+
+.navbar-deconnexion{
+  align-items:center;
+}
+</style>

@@ -2,8 +2,8 @@
   <div id="settings">
     <div >
     <!-- titre du dashboard -->
-    <h1 class="title1">Réglages</h1>
-    <h2 class="title2">Personnalisez vos préférences</h2>
+    <h1 class="title1">Compte</h1>
+    <h2 class="title2">Informations du compte</h2>
     <!-- barre de navigation du compte utilisateur -->
     <div class="navbaruser">
       <li>
@@ -38,7 +38,7 @@
       </li>
       <li>
         <router-link to="/compte">
-          <img  src="../assets/images/picto-compte.png" alt="picto-compte"/>
+          <img src="../assets/images/picto-compte.png" alt="picto-compte"/>
         </router-link>
       </li>
       <li>
@@ -50,28 +50,29 @@
      <!-- box settings -->
     <div class="containerboard">
       <div class="boxcontent-settings">
+
+          
         <div class="boxleft">
+
           <div class="programme4">
             <div class="task">
               <div class="boxtime">
-                <span class="picto"><img src="../assets/images/img-alarm-reglages.png" alt="alarm"/></span>
-                <p class="totaltime">Rappels</p>
+                <span class="picto"><img src="../assets/images/picto-profil.png" alt="profil"/></span>
+                <p >Télécharger une image de profil</p>
               </div>
             </div>
           </div>
           <div class="programme4">
             <div class="task">
               <div class="boxtime">
-                <span class="picto"><img src="../assets/images/img-bell-reglages.png" alt="bell"/></span>
-                 <p class="totaltime">Notifications</p>
+                <p>Nom de l'utilisateur</p>
               </div>
             </div>
           </div>
           <div class="programme4">
             <div class="task">
               <div class="boxtime">
-                <span class="picto"><img src="../assets/images/img-dashboard-reglages.png" alt="dashboard"/></span>
-                 <p class="totaltime">Thème couleur</p>
+                 <p>adresse mail de l'utilisateur</p>
               </div>
             </div>
           </div>
@@ -79,15 +80,14 @@
           <div class="programme4">
             <div class="task">
               <div class="boxtime">
-                <span class="picto"><img src="../assets/images/picto-mot-de-passe.png" alt="picto-mot-de-passe"/></span>
                 <!-- <p class="totaltime"><a @click="udpdateProfile()">Réinitialiser le mot de passe</a></p> -->
-                <p class="totaltime">Réinitialiser le mot de passe</p>
+                <p>Modifier le mot de passe</p>
               </div>
             </div>
           </div>
         </div>
         <div class="boxright">
-          <img id="inscription" src="../assets/images/img-reglages.png" alt="image femme qui regarde un tableau" width="400px"/>
+          <img id="inscription" src="../assets/images/img-compte.png" alt="image femme qui regarde un tableau" width="300px"/>
         </div>
        
       </div>
@@ -180,13 +180,23 @@ $grey: grey;
       .boxleft{
         margin: 3% ;
 
+        .totaltime{
+            display: flex;
+            opacity: 80%;
+            z-index: 0;
+        }
+
         .programme4{
-          height: 3rem;
+          height: 3.5rem;
           padding: 1rem ;
           box-sizing: border-box;
 
           .task{
            padding: 0;
+           .boxtime{
+
+               align-items: center;
+           }
           }
         }
 
@@ -194,7 +204,7 @@ $grey: grey;
 
       .boxright{
         margin: 3% ;
-
+        padding-top: 4rem;
 
       }
 

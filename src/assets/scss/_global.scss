@@ -63,17 +63,21 @@ p {
 }
 
 h1 {
-	font-size: 3rem;
+	font-size: 2.5rem;
 	font-weight: 900;
 }
 
 h2 {
 	font-size: 1.3rem;
-	font-weight: 500;
+	font-weight: 400;
+	width: 25rem;
+	margin: 0 auto;
+	margin-top: 1rem;
 }
 
 h3 {
-	font-size: 1.6rem;
+	font-size: 1.3rem;
+	color: $rouge;
 }
 
 h4 {
@@ -92,17 +96,23 @@ a {
 	font-family: 'Open Sans', sans-serif;
 	text-decoration: none;
 	font-size: 14px;
-	color: $rouge;
+
 	margin: 0;
 	margin-left: 10px;
 	cursor: pointer;
 
 	&:hover {
 		color: lighten($rouge, 5%);
+		color: $rouge;
 	}
 }
 
 // globals
+
+.success{
+	color: $success;
+}
+
 section {
 	display: flex;
 	max-width: 1200px;
@@ -219,10 +229,11 @@ section {
 	margin: 0;
 	padding: 0;
 	list-style: none;
-	margin-left: 100px;
-
+	margin: 2rem 0;
+	
 	li {
 		display: inline-block;
+		padding-left: 2rem;
 	}
 }
 

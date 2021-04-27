@@ -6,22 +6,6 @@ import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
-// realtime firebase connection
-// fb.postsCollection.orderBy('createdOn', 'desc').onSnapshot(snapshot => {
-//   let postsArray = []
-
-//   snapshot.forEach(doc => {
-//     let post = doc.data()
-//     post.id = doc.id
-
-//     postsArray.push(post)
-//   })
-
-//   store.commit('setPosts', postsArray)
-// })
-
-
-
 
 const url = 'http://localhost:8000/api/user';
 
@@ -53,7 +37,7 @@ const store = new Vuex.Store({
       axios.post(url+'/connexion',{
         email: loginForm.email,
         password: loginForm.password
-      }, { withCredentials: true})
+      }, {withCredentials: true})
       .then(function (response) {
         // console.log(response.data, "response.data");
         commit('enregistrementUtilisateur', response.data);
@@ -71,8 +55,8 @@ const store = new Vuex.Store({
           // console.log(response,"dossier utilisateur");
           commit ('setUserFolder', response.data);
         })
-        if (router.currentRoute.path === '/connexion') {
-          router.push('/')
+        if (router.currentRoute.path === '/connexion2') {
+          router.push('/dashboard')
         }
       })
       .catch(function (error) {
@@ -89,6 +73,7 @@ const store = new Vuex.Store({
         .then(function (response) {
           console.log(response);
           dispatch('traitementUtilisateur', response);
+          return ('Vous êtes bien inscrit')
         })
         .catch(function (error) {
           console.log(error);
@@ -150,7 +135,7 @@ const store = new Vuex.Store({
           state.userTask[i].timeRealTask = updateTask.timeRealTask
           state.userTask[i].echeanceTask = updateTask.echeanceTask
           state.userTask[i].rappelTask = updateTask.rappelTask
-          state.userTask[i].folderId = updateTask.folderId
+          state.userTask[i].folderTask = updateTask.folderTask
           console.log(updateTask.folderId, "dossier normalement mis à jour");
         }
       }
@@ -222,7 +207,7 @@ const store = new Vuex.Store({
       .then(()=>{
         console.log('LOGGED OUT')
         commit('enregistrementUtilisateur', {})
-        router.push('/connexion')
+        router.push('/')
       })
     },
   },
