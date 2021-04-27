@@ -5,7 +5,7 @@
     <h1 class="title1">Réglages</h1>
     <h2 class="title2">Personnalisez vos préférences</h2>
     <!-- barre de navigation du compte utilisateur -->
-    <div class="navbaruser">
+    <!-- <div class="navbaruser">
       <li>
         <router-link to="/dashboard">
           <img src="../assets/images/picto-dashboard.png" alt="picto-dashboard"/>
@@ -46,8 +46,9 @@
           <img src="../assets/images/picto-settings.png" alt="picto-settings"/>
         </router-link>
       </li>
-    </div>
-     <!-- box settings -->
+    </div> -->
+     <NavbarUser></NavbarUser>
+    <!-- box settings -->
     <div class="containerboard">
       <div class="boxcontent-settings">
         <div class="boxleft">
@@ -113,8 +114,12 @@
 <script>
 
 import { mapState } from 'vuex'
+import  NavbarUser from '@/components/NavbarUser'
 
 export default {
+  components: {
+    NavbarUser,
+  },
   name: 'Settings',
   data() {
     return {

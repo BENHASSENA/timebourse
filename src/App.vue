@@ -2,6 +2,7 @@
   <div id="app" data-app>
     <!-- <NavbarHome v-if="showNavHome"></NavbarHome> -->
     <SiteNav v-if="showNav" ></SiteNav>
+  
     <router-view/>
   </div>
 </template>

@@ -62,7 +62,16 @@ const store = new Vuex.Store({
       .catch(function (error) {
         console.log(error);
       });
-
+    },
+    todayStore({commit}, dateToday){
+      console.log('Aujourdhui')
+      // axios.post(url+'/usertask',{
+      //   id: response.data._id,
+      // })
+      // .then(function(response){
+      //   // console.log(response,"tache utilisateur");
+      //   commit ('setUserTask', response.data);
+      // })
     },
     signupStore({ dispatch }, form) { 
         axios.post(url+'/register', {
@@ -73,7 +82,6 @@ const store = new Vuex.Store({
         .then(function (response) {
           console.log(response);
           dispatch('traitementUtilisateur', response);
-          return ('Vous êtes bien inscrit')
         })
         .catch(function (error) {
           console.log(error);

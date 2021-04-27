@@ -4,7 +4,7 @@
     <h1 class="title1">Tableau de bord</h1>
     <h2 class="title2">Gestion des tâches</h2>
     <!-- barre de navigation du dashboard -->
-    <div class="navbaruser">
+    <!-- <div class="navbaruser">
       <li>
         <router-link to="/dashboard">
           <img src="../assets/images/picto-dashboard.png" alt="picto-dashboard"/>
@@ -45,7 +45,8 @@
           <img src="../assets/images/picto-settings.png" alt="picto-settings"/>
         </router-link>
       </li>
-    </div>
+    </div> -->
+    <NavbarUser></NavbarUser>
     <!-- contenu du dashboard -->
     <div class="containerboard">
       <div class="boxleft">
@@ -53,28 +54,28 @@
           <div class="time">
             <div class="boxtime">
               <span><img src="../assets/images/picto-sun.png" alt="picto-sun"/></span>
-              <p class="titleprogramme">Aujourd'hui</p>
+              <p class="titleprogramme" @click="today()">Aujourd'hui</p>
             </div>
             <p class="totaltime">4h</p>
           </div>
           <div class="time">
             <div class="boxtime">
               <span><img src="../assets/images/picto-suntomorrow.png" alt="picto-suntomorrow"/></span>
-              <p class="titleprogramme">Demain</p>
+              <p class="titleprogramme" @click="tomorrow()">Demain</p>
             </div>
             <p class="totaltime">6h</p>
           </div>
           <div class="time">
             <div class="boxtime">
               <span><img src="../assets/images/picto-calendar.png" alt="picto-calendar"/></span>
-              <p class="titleprogramme">Un jour</p>
+              <p class="titleprogramme" @click="oneDay()">Un jour</p>
             </div>
             <p class="totaltime">2h</p>
           </div>
           <div class="time">
             <div class="boxtime">
               <span><img src="../assets/images/picto-sunoneday.png" alt="picto-sunoneday"/></span>
-              <p class="titleprogramme">A venir</p>
+              <p class="titleprogramme" @click="come()">A venir</p>
             </div>
             <p class="totaltime">20h</p>
           </div>
@@ -236,11 +237,6 @@
         </div>
       </div> -->
     </div>
-    <!-- utilisation du composant Componantmodal -->
-    <transition name="fade">
-      <CommentModal v-if="showCommentModal" :post="selectedPost" @close="toggleCommentModal()"></CommentModal>
-    </transition>
-
     <!-- formulaire ajout de tache -->
     <v-dialog
             v-model="dialog"
@@ -393,6 +389,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import  NavbarUser from '@/components/NavbarUser'
 import moment from 'moment'
 import CommentModal from '@/components/CommentModal'
 import {
@@ -402,9 +399,10 @@ import {
     mdiTimer,
   } from '@mdi/js'
 
+
 export default {
   components: {
-    CommentModal,
+    NavbarUser
   },
   data() {
     return {
@@ -426,20 +424,6 @@ export default {
       time: '',
       menu1:'',
       date:'',
-      showCommentModal: false,
-      selectedPost: {},
-      showPostModal: false,
-      fullPost: {},
-      postComments: [],
-      admins: [
-        ['Settings', 'mdi-cog-outline'],
-      ],
-      cruds: [
-        ['Haute priorité'],
-        ['Moyenne priorité'],
-        ['Faible priorité'],
-        ['Pas de priorité'],
-      ],
       currentTask:null,
       icons: {
         mdiPencil,
@@ -447,6 +431,7 @@ export default {
         mdiClockTimeFive,
         mdiTimer
       },
+      dateToday:'',
     
     }
     },
@@ -548,20 +533,19 @@ export default {
       // console.log(id);
       this.$store.dispatch('deleteFolderStore', id)
     },
-    toggleCommentModal(post) {
-      this.showCommentModal = !this.showCommentModal
+    today(dateToday){
+      // console.log('Aujourdhui')
+      this.$store.dispatch('todayStore', dateToday)
+    },
+    tomorrow(){
 
-      // if opening modal set selectedPost, else clear
-      if (this.showCommentModal) {
-        this.selectedPost = post
-      } else {
-        this.selectedPost = {}
-      }
     },
-    closePostModal() {
-      this.postComments = []
-      this.showPostModal = false
+    oneDay(){
+
     },
+    come(){
+
+    }
   },
   filters: {
     formatDate(val) {

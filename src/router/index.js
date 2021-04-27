@@ -8,6 +8,7 @@ import Apropos from '../views/Apropos.vue'
 import Inscription from '../views/Inscription.vue'
 import Connexion2 from '../views/Connexion2.vue'
 import Compte from '../views/Compte.vue'
+import Tasks from '../views/Tasks.vue'
 
 
 Vue.use(VueRouter)
@@ -52,6 +53,11 @@ const routes = [
     path: '/compte',
     name: 'Compte',
     component: Compte
+  },
+  {
+    path: '/tasks',
+    name: 'Tasks',
+    component: Tasks
   },
   {
     path: '/connexion',
