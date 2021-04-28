@@ -119,12 +119,23 @@ $grey: grey;
     margin-bottom: 3rem;
 }
 
+
+
 #section1, #section2, #section3{
-    margin-top: 10rem;
+
     margin-bottom: 10rem;
+
+        @media screen and (max-width: 1025px) {
+            margin: 0px;
+        }
+      
 
     .centre{
         margin-left: -150px;
+
+         @media screen and (max-width: 1025px) {
+            margin-left: 0px;
+        }
     }
 
     .box-section1{
@@ -134,21 +145,45 @@ $grey: grey;
         margin: 5rem;
         width: 80%;
         margin: 0 auto;
+
+        @media screen and (max-width: 1025px) {
+          display: block;
+        }
     
         .img1-section1{
             position: relative;
             top: 100px;
-            width: 80%;
+
+            @media screen and (max-width: 1025px) {
+                width: 50%;
+                position: relative;
+                top: 0px;
+                margin: 8rem 0 ;
+            }
         }
         .img2-section1{
             width: 90%;
             position: relative;
             bottom: -10px;
+            margin: 8rem 0 ;
+
+            @media screen and (max-width: 1025px) {
+                width: 40%;
+                margin-top: 5rem;
+
+            }
         }
         .circle{
             position: relative;
             top: 200px;
             left:80px;
+
+             @media screen and (max-width: 1025px) {
+                position: relative;
+                top: 100px;
+                left:80px;
+                margin-bottom: 5rem;
+            }
         }
     }
 
@@ -164,10 +199,20 @@ a:-webkit-any-link{
     height: 150px;
     border-radius: 50%;
     background-color: $yellow;
+                @media screen and (max-width: 1025px) {
+                position: relative;
+                top: 100px;
+                left:80px;
+                margin-bottom: 5rem;
+                width: 100px;
+                height: 100px;
+            }
+    
 }
 
 
 #section2{
+
 
     .logo{
         margin: 5rem 0;
@@ -185,10 +230,20 @@ a:-webkit-any-link{
         display: flex;
         margin-top: 7rem;
         width: 100%;
+        
+         @media screen and (max-width: 1025px) {
+            display: block;
 
+        }
         .card{
             width: 25%;    
             padding: 0 2rem ;
+
+            @media screen and (max-width: 1025px) {
+            width: 70%;   
+            margin: 0 auto;
+
+        }
 
             .img-card{
                 height: 60%;
@@ -197,8 +252,15 @@ a:-webkit-any-link{
                 align-items: center;
 
                 img{
-                    width: 60%;
+                    width: 80%;
                     margin-bottom: 5rem;
+
+                    @media screen and (max-width: 1025px) {
+                    margin-top: 5rem;
+                     width: 60%;
+
+                    }
+
                 }
             }
         }
@@ -213,6 +275,14 @@ a:-webkit-any-link{
         width:40px;
         height: 40px;
         margin-left: 15rem ;
+
+         @media screen and (max-width: 1025px) {
+                position: relative;
+                top: 0px;
+                left:0px;
+                margin-bottom: 5rem;
+                margin-top: 5rem ;
+            }
     }
 
   

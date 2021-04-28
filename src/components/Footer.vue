@@ -85,6 +85,7 @@ ul.inline{
 
   .button{
     min-width: 50px;
+    margin-top: 1rem;
   }
 
   
@@ -97,7 +98,7 @@ section{
 
 }
 footer .footer[data-v-40ab164b]{
-   @media screen and (max-width: 900px) {
+   @media screen and (max-width: 1090px) {
       display: block;
    }
 

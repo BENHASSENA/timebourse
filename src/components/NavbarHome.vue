@@ -4,29 +4,30 @@
       <nav class="navbar-connexion">
         <router-link to="/">
           <img class="inline" src="../assets/images/logo-timebourse-red.png" alt="logo" height="50px"/>
-          <svg class=burger version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="34px" height="27px" viewBox="0 0 34 27" enable-background="new 0 0 34 27" xml:space="preserve">
-            <rect fill="#A90909" width="34" height="4"></rect>
-            <rect y="11" fill="#A90909" width="34" height="4"></rect>
-            <rect y="23" fill="#A90909" width="34" height="4"></rect>
-          </svg>
         </router-link>
-        <ul class="inline">
+        
+        <ul class="inline boxmenuburger" >
+          <svg  @click="toggleMenuBurger()" class=burger version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="34px" height="27px" viewBox="0 0 34 27" enable-background="new 0 0 34 27" xml:space="preserve">
+          <rect fill="#A90909" width="34" height="4"></rect>
+          <rect y="11" fill="#A90909" width="34" height="4"></rect>
+          <rect y="23" fill="#A90909" width="34" height="4"></rect>
+        </svg>
           <router-link to="/">
-            <li>TimeBourse</li>
+            <li v-if="showMenuBurger">TimeBourse</li>
           </router-link>
           <router-link to="/fonctionnalites">
-            <li>Fonctionnalités</li>
+            <li v-if="showMenuBurger">Fonctionnalités</li>
           </router-link>
           <router-link to="/apropos">
-          <li>A propos</li>
+            <li v-if="showMenuBurger">A propos</li>
           </router-link>
           <router-link to="/contact">
-            <li>Contact</li>
+            <li v-if="showMenuBurger">Contact</li>
           </router-link>
           <router-link to="/inscription">
-            <li class="inscription"> Inscription</li>
+            <li v-if="showMenuBurger" class="inscription"> Inscription</li>
           </router-link>
-          <li>  
+          <li v-if="showMenuBurger">  
             <router-link to="/connexion2">
             <button class="button">Connexion</button>
             </router-link>
@@ -40,8 +41,19 @@
 <script>
 
 export default {
+  data() {
+    return {
+      showMenuBurger: true,
+    }
+  },
+  methods:{
+    toggleMenuBurger() {
+      this.showMenuBurger = !this.showMenuBurger
+    }
+  }
 
 }
+
 </script>
 
 <style lang="scss" scoped>
@@ -52,14 +64,24 @@ $yellow: #FFBE0C;
 $backgroundgrey: #F9F9F7;
 $grey: grey;
 
-.burger{
 
+.burger{
   position: relative;
-    bottom: 45px;
-    left: 40px;
+  bottom: 15px;
+  left: 5px;
+
 
   @media screen and (min-width: 900px) {
     display: none;
+  }
+}
+
+.boxmenuburger{
+
+  @media screen and (max-width: 900px){
+  position: relative;
+    bottom: 60px;
+    left: 100px;
   }
 }
 
@@ -79,11 +101,13 @@ ul.inline{
         position: relative;
         z-index: 10;
         margin: 0;
+        padding-left: 0;
       }
   }
 
   .button{
     min-width: 50px;
+    margin-top: 1rem;
   }
 
   
@@ -103,6 +127,7 @@ section{
 }
 
 .inscription{
+
   color: $rouge;
 }
 
