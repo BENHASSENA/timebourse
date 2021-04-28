@@ -97,6 +97,10 @@ $grey: grey;
         height: 30px;
         margin-left: 15rem ;
         position: relative;
+        @media screen and (max-width: 900px) {
+        margin-top: 5rem ;
+        position: relative;
+        }
 
     }
 
@@ -105,22 +109,44 @@ $grey: grey;
         justify-content: space-between;
         margin: 0 auto;
         margin: 5rem;
+        @media screen and (max-width: 900px) {
+            display: block;
+        }
         
 
         .left{
             width: 30%;
             position: relative;
             top: 100px;
+                @media screen and (max-width: 900px) {
+                    margin: 0 auto;
+                    position: relative;
+                    top: -50px;
+                }
         }
 
         .center{
             width: 30%;
+            @media screen and (max-width: 900px) {
+            margin: 0 auto;
+            width: 50%;
+            }
+            @media screen and (max-width: 750px) {
+            margin: 0 auto;
+            width: 80%;
+            }
         }
 
         .right{
             width: 30%;
             position: relative;
             bottom: 100px;
+            @media screen and (max-width: 900px) {
+                margin: 0 auto;
+                position: relative;
+                top: 100px;
+            }
+
         }
     }
 

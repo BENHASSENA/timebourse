@@ -99,9 +99,12 @@ $grey: grey;
     margin-bottom: 3rem;
 }
 
+
 #section1{
     margin-top: 10rem;
     margin-bottom: 10rem;
+
+
 
     .box-card{
         display: flex;
@@ -109,10 +112,26 @@ $grey: grey;
         margin: 0 auto;
         margin-bottom: 5rem;
         justify-content: center;
+        @media screen and (max-width: 1025px) {
+            width: 100%;
+        }
+        @media screen and (max-width: 900px) {
+           display: block;
+        }
+
 
         .card{
-            width: 30%;    
+            width: 50%;    
             padding: 0 2rem ;
+        @media screen and (max-width: 900px) {
+           margin: 0 auto;
+           margin-top: 5rem;
+           width: 50%;   
+        }
+        @media screen and (max-width: 750px) {
+
+           width: 75%;   
+        }
 
             .img-card{
                 height: 40%;
@@ -148,9 +167,25 @@ $grey: grey;
         justify-content: center;
         margin: 5rem;
 
+        @media screen and (max-width: 900px) {
+            display: block;
+            margin: 0;
+        }
+
         .left{
             width: 30%;
             padding-right: 8rem;
+
+        @media screen and (max-width: 1200px) {
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        @media screen and (max-width: 900px) {
+            padding-right: 4rem;
+        }
+
+
 
             h3{
                 text-align: left;
@@ -166,9 +201,18 @@ $grey: grey;
         .right{
             width: 50%;
 
+        @media screen and (max-width: 1200px) {
+            margin: 0 auto;
+        }
+
             img{
                 width: 90%;
-               
+                        
+                @media screen and (max-width: 900px) {
+                    margin-top: 4rem;
+                    width: 85%;
+                }
+                    
             }
         }
     }
@@ -179,37 +223,83 @@ $grey: grey;
         margin-left: 30rem ;
         position: relative;
 
+        @media screen and (max-width: 900px) {
+        margin-left: 20rem ;
+        bottom: 5rem;
+        position: relative;
+
+        }
+
     }
 }
 
 
 #section3{
+
+    @media screen and (max-width: 1200px) {
+        margin: 0 auto;
+        display: block;
+    }
     .circle{
         background-color: $rouge;
         width:40px;
         height: 40px;
         margin-left: 70rem ;
         position: relative;
+        @media screen and (max-width: 1200px) {
+            margin-left: 50rem ;
+            bottom: 5rem;
+        }
+        @media screen and (max-width: 900px) {
+            margin-left: 30rem ;
+            bottom: 5rem;
+        }
+        @media screen and (max-width: 750px) {
+            margin-left: 20rem ;
+            bottom: 5rem;
+        }
 
     }
 
     h2{
         width: 20%;
+        @media screen and (max-width: 1200px) {
+            width: 50%;
+        }
     }
     .box-section1{
         align-items: center;
         display: flex;
         justify-content: space-between;
         margin: 5rem;
+        @media screen and (max-width: 900px) {
+            display: block;
+
+        }
     
         .img1-section1{
             position: relative;
             top: 100px;
+         @media screen and (max-width: 900px) {
+            width: 40%;
+            margin-bottom: 10rem;
+        }
+        @media screen and (max-width: 750px) {
+            width: 80%;
+        }
         }
         .img2-section1{
             width: 70%;
             position: relative;
             bottom: -10px;
+        @media screen and (max-width: 900px) {
+            width: 30%;
+            margin-top: 5rem;
+        }
+        @media screen and (max-width: 750px) {
+            width: 60%;
+        }
+
         }
         .circle{
             position: relative;

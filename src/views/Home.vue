@@ -259,7 +259,10 @@ a:-webkit-any-link{
                     @media screen and (max-width: 1025px) {
                     margin-top: 5rem;
                      width: 60%;
+                    }
+                    @media screen and (max-width: 750px) {
 
+                     width: 80%;
                     }
 
                 }

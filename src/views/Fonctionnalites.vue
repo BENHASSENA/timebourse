@@ -196,10 +196,15 @@ $grey: grey;
     top: 5rem;
     left: 10rem;
 
-      @media screen and (max-width: 900px) {
+    @media screen and (max-width: 900px) {
         position: relative;
         top: 5rem;
         left: 5rem;
+    }
+    @media screen and (max-width: 750px) {
+        position: relative;
+        top: 23rem;
+        left: -8rem;
     }
 }
 
@@ -226,7 +231,7 @@ $grey: grey;
             width: 25%;    
             padding: 0 2rem ;
             @media screen and (max-width: 900px) {
-              width: 40%;
+              width: 60%;
               display: block;
               margin: 0 auto;
               margin-top: 5rem;

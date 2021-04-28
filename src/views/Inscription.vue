@@ -122,17 +122,41 @@ $grey: grey;
         margin-left: 15rem ;
         position: relative;
 
+        @media screen and (max-width: 1200px) {
+        margin-left: 10rem;
+        margin-top: 5rem;
+        }
+
     }
 
     .box-contact{
         display: flex;
         justify-content: center;
         margin: 5rem;
+        @media screen and (max-width: 1200px) {
+        margin: 5rem 0rem;
+        }
+        @media screen and (max-width: 750px) {
+            display: block;
+
+        }
         
 
         .left{
             width: 30%;
             padding-right: 8rem;
+
+            @media screen and (max-width: 900px) {
+                width: 50% ;
+                position: relative;
+                bottom: 0;                
+                margin: 0 auto;
+
+            }
+            @media screen and (max-width: 750px) {
+                padding-right: 4rem;
+
+            }
 
             h3{
                 // width:50%;
@@ -149,6 +173,16 @@ $grey: grey;
 
         .right{
             width: 30%;
+
+            @media screen and (max-width: 900px) {
+                width: 40%;
+            }
+
+            @media screen and (max-width: 750px) {
+                margin: 0 auto;
+                margin-top: 3rem;
+                width: 60%;
+            }
         }
     }
 
@@ -177,6 +211,22 @@ $grey: grey;
     position: relative;
     bottom: 10rem;
     left: 80rem;
+        @media screen and (max-width: 1300px) {
+    position: relative;
+    bottom: 10rem;
+    left: 50rem;
+    }
+    @media screen and (max-width: 900px) {
+    position: relative;
+    bottom: 10rem;
+    left: 50rem;
+    }
+
+    @media screen and (max-width: 750px) {
+    position: relative;
+    bottom: 20rem;
+    left: 25rem;
+    }
 }
 
 .box-img{
@@ -184,6 +234,20 @@ $grey: grey;
     position: relative;
     bottom: 50px;
     left: -200px;
+
+      img{
+        @media screen and (max-width: 900px) {
+            width: 40% ;
+            position: relative;
+            bottom: 0;
+            left: 50px;
+        }
+        @media screen and (max-width: 750px) {
+            margin: 0 auto;
+            margin-top: 8rem;
+            left: 150px;
+        }
+    }
 }
 
 .line-footer{
