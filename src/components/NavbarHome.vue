@@ -28,7 +28,7 @@
             <li v-if="showMenuBurger" class="inscription"> Inscription</li>
           </router-link>
           <li v-if="showMenuBurger">  
-            <router-link to="/connexion2">
+            <router-link to="/connexion">
             <button class="button">Connexion</button>
             </router-link>
           </li>

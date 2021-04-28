@@ -5,48 +5,6 @@
     <h1 class="title1">Tableau de bord</h1>
     <h2 class="title2">Gestion des tâches</h2>
     <!-- barre de navigation du dashboard -->
-    <!-- <div class="navbaruser">
-      <li>
-        <router-link to="/dashboard">
-          <img src="../assets/images/picto-dashboard.png" alt="picto-dashboard"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/tasks">
-          <img class="en-cours" src="../assets/images/picto-tasks.png" alt="picto-tasks"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/activities">
-          <img class="en-cours" src="../assets/images/picto-activities.png" alt="picto-activities"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/statistiques">
-          <img class="en-cours" src="../assets/images/picto-statistiques.png" alt="picto-statistiques"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/rapports">
-          <img class="en-cours" src="../assets/images/picto-rapports.png" alt="picto-rapports"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/objectifs">
-          <img class="en-cours" src="../assets/images/picto-goals.png" alt="picto-goals"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/compte">
-          <img src="../assets/images/picto-compte.png" alt="picto-compte"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/settings">
-          <img src="../assets/images/picto-settings.png" alt="picto-settings"/>
-        </router-link>
-      </li>
-    </div> -->
     <NavbarUser></NavbarUser>
     <!-- contenu du dashboard -->
     <div class="containerboard">
@@ -163,6 +121,9 @@
           </div>
         </div>
       </div>
+
+
+
 
       <!-- <div class="boxright">
         <div class="programme">
@@ -434,8 +395,6 @@ export default {
       menu1:'',
       date:'',
       currentTask:null,
-
-      dateToday:'',
     }
   },
 
@@ -539,9 +498,13 @@ export default {
       // console.log(id);
       this.$store.dispatch('deleteFolderStore', id)
     },
-    today(dateToday){
+    today(){
       // console.log('Aujourdhui')
-      this.$store.dispatch('todayStore', dateToday)
+      this.$store.dispatch('todayStore', {
+        echeanceTask: this.createTaskForm.echeanceTask
+      })
+      
+
     },
     tomorrow(){
 

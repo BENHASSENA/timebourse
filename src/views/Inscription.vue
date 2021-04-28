@@ -95,8 +95,9 @@ export default {
                     email: this.signupForm.email,
                     password: this.signupForm.password,
         } )
-        this.savingSuccessfull = !this.savingSuccessfull   
-    }
+        this.savingSuccessfull = !this.savingSuccessfull  
+        this.signupForm = ''
+    },
   }
 }
 </script>

@@ -8,7 +8,7 @@
             </li>
             <li>
                 <router-link to="/tasks">
-                <img src="../assets/images/picto-tasks.png" alt="picto-tasks"/>
+                <img class="en-cours" src="../assets/images/picto-tasks.png" alt="picto-tasks"/>
                 </router-link>
             </li>
             <li>

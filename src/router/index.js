@@ -6,7 +6,7 @@ import Contact from '../views/Contact.vue'
 import Fonctionnalites from '../views/Fonctionnalites.vue'
 import Apropos from '../views/Apropos.vue'
 import Inscription from '../views/Inscription.vue'
-import Connexion2 from '../views/Connexion2.vue'
+import Connexion from '../views/Connexion.vue'
 import Compte from '../views/Compte.vue'
 import Tasks from '../views/Tasks.vue'
 
@@ -45,9 +45,9 @@ const routes = [
     component: Inscription
   },
   {
-    path: '/connexion2',
-    name: 'Connexion2',
-    component: Connexion2
+    path: '/connexion',
+    name: 'Connexion',
+    component: Connexion
   },
   {
     path: '/compte',
@@ -59,11 +59,11 @@ const routes = [
     name: 'Tasks',
     component: Tasks
   },
-  {
-    path: '/connexion',
-    name: 'Connexion',
-    component: () => import(/* webpackChunkName: "connexion" */ '../views/Connexion.vue')
-  },
+  // {
+  //   path: '/connexion',
+  //   name: 'Connexion',
+  //   component: () => import(/* webpackChunkName: "connexion" */ '../views/Connexion.vue')
+  // },
   {
     path: '/settings',
     name: 'Settings',

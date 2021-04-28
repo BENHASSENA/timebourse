@@ -59,7 +59,7 @@ const store = new Vuex.Store({
           // console.log(response,"dossier utilisateur");
           commit ('setUserFolder', response.data);
         })
-        if (router.currentRoute.path === '/connexion2') {
+        if (router.currentRoute.path === '/connexion') {
           router.push('/dashboard')
         }
       })
@@ -67,21 +67,17 @@ const store = new Vuex.Store({
         console.log(error);
       });
     },
-    todayStore({commit}, dateToday){
+    todayStore({state}, dateToday){
       console.log('Aujourdhui')
-      axios.post(url+'/usertask',{
-        id: dateToday,
-      })
-      .then(function(response){
-        console.log(response,"tache utilisateur");
-        commit ('setUserTask', response.data);
-      })
-      
-      // .then(function(response){
-      //   console.log(response,"tache utilisateur");
-      //   dispatch ('todayStore', response.data.user_id);
-      // })
-      
+      for(var i=0; i<state.userTask.length; i++){
+        console.log(state.userTask[i],"coucou");
+        if(dateToday.echeanceTask == state.userTask[i].echeanceTask){
+          console.log("Yes!!");
+      //     console.log(state.userTask[i]._id, "????????");
+        
+        }
+      }
+     
     },
     signupStore({ dispatch }, form) { 
         axios.post(url+'/register', {
