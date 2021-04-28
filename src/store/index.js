@@ -10,7 +10,11 @@ Vue.use(Vuex)
 const url = 'http://localhost:8000/api/user';
 
 const store = new Vuex.Store({
-  plugins: [createPersistedState()],
+  plugins: [createPersistedState(
+  //   {
+  //   paths: ['{userProfile}','[userTask]','[userFolder]']
+  // }
+  )],
   state: {
     userProfile: {},
     userTask:[],
@@ -65,13 +69,19 @@ const store = new Vuex.Store({
     },
     todayStore({commit}, dateToday){
       console.log('Aujourdhui')
-      // axios.post(url+'/usertask',{
-      //   id: response.data._id,
-      // })
+      axios.post(url+'/usertask',{
+        id: dateToday,
+      })
+      .then(function(response){
+        console.log(response,"tache utilisateur");
+        commit ('setUserTask', response.data);
+      })
+      
       // .then(function(response){
-      //   // console.log(response,"tache utilisateur");
-      //   commit ('setUserTask', response.data);
+      //   console.log(response,"tache utilisateur");
+      //   dispatch ('todayStore', response.data.user_id);
       // })
+      
     },
     signupStore({ dispatch }, form) { 
         axios.post(url+'/register', {

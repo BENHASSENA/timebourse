@@ -1,52 +1,12 @@
 <template>
   <div id="settings">
+    <SiteNav v-if="showNav" ></SiteNav>
     <div >
     <!-- titre du dashboard -->
     <h1 class="title1">Réglages</h1>
     <h2 class="title2">Personnalisez vos préférences</h2>
     <!-- barre de navigation du compte utilisateur -->
-    <!-- <div class="navbaruser">
-      <li>
-        <router-link to="/dashboard">
-          <img src="../assets/images/picto-dashboard.png" alt="picto-dashboard"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/tasks">
-          <img class="en-cours" src="../assets/images/picto-tasks.png" alt="picto-tasks"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/activities">
-          <img class="en-cours" src="../assets/images/picto-activities.png" alt="picto-activities"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/statistiques">
-          <img class="en-cours" src="../assets/images/picto-statistiques.png" alt="picto-statistiques"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/rapports">
-          <img class="en-cours" src="../assets/images/picto-rapports.png" alt="picto-rapports"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/objectifs">
-          <img class="en-cours" src="../assets/images/picto-goals.png" alt="picto-goals"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/compte">
-          <img  src="../assets/images/picto-compte.png" alt="picto-compte"/>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/settings">
-          <img src="../assets/images/picto-settings.png" alt="picto-settings"/>
-        </router-link>
-      </li>
-    </div> -->
+
      <NavbarUser></NavbarUser>
     <!-- box settings -->
     <div class="containerboard">
@@ -115,10 +75,12 @@
 
 import { mapState } from 'vuex'
 import  NavbarUser from '@/components/NavbarUser'
+import SiteNav from '@/components/SiteNav'
 
 export default {
   components: {
     NavbarUser,
+    SiteNav,
   },
   name: 'Settings',
   data() {
@@ -129,7 +91,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['userProfile'])
+    ...mapState(['userProfile']),
+    showNav() {
+      return Object.keys(this.userProfile).length > 1
+    },  
   },
   methods: {
     updateProfile() {
@@ -178,8 +143,14 @@ $grey: grey;
       .boxcontent-settings{
         justify-content: center;
         display: flex;
-        width: 100%;
         margin: 0 auto;
+
+         @media screen and (max-width: 690px) {
+          display: block;
+          justify-content: center;
+          margin: 0 auto;
+          margin-top: 2rem;
+        }
       }
 
       .boxleft{
@@ -199,7 +170,9 @@ $grey: grey;
 
       .boxright{
         margin: 3% ;
-
+        @media screen and (max-width: 690px) {
+          margin-top: 5rem;
+        }
 
       }
 

@@ -63,8 +63,6 @@ $grey: grey;
 .navbar-connexion{
   margin-bottom: 2rem;
 }
-.inscription{
-  color: $rouge;
-}
+
 
 </style>

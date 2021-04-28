@@ -1,7 +1,5 @@
 <template>
   <div id="app" data-app>
-    <!-- <NavbarHome v-if="showNavHome"></NavbarHome> -->
-    <SiteNav v-if="showNav" ></SiteNav>
   
     <router-view/>
   </div>
@@ -9,22 +7,12 @@
 
 <script>
 import { mapState } from 'vuex'
-import SiteNav from '@/components/SiteNav'
-// import NavbarHome from '@/components/NavbarHome.vue'
+
+
 
 export default {
-  components: {
-    SiteNav,
-    // NavbarHome
-  },
   computed: {
     ...mapState(['userProfile']),
-    showNav() {
-      return Object.keys(this.userProfile).length > 1
-    },
-    // showNavHome() {
-    //   return this.$route.name === 'Home'
-    // }
   }
 }
 

@@ -53,10 +53,65 @@ $yellow: #FFBE0C;
 $backgroundgrey: #F9F9F7;
 $grey: grey;
 
-.inscription{
-    color: $rouge;
+.burger{
+
+  position: relative;
+    bottom: 45px;
+    left: 40px;
+
+  @media screen and (min-width: 900px) {
+    display: none;
+  }
 }
 
+ul.inline{
+  @media screen and (max-width: 900px) {
+        margin: 0;
+      }
+
+}
+
+.inline{
+
+  li{
+      @media screen and (max-width: 900px) {
+        display: block;
+        float: inherit;  
+        position: relative;
+        z-index: 10;
+        margin: 0;
+      }
+  }
+
+  .button{
+    min-width: 50px;
+  }
+
+  
+}
+
+section{
+   @media screen and (max-width: 900px) {
+        float: inherit;  
+      }
+
+}
+footer .footer[data-v-40ab164b]{
+   @media screen and (max-width: 900px) {
+      display: block;
+   }
+
+}
+
+
+.navbar-connexion{
+  margin-bottom: 2rem;  
+
+}
+
+.inscription{
+  color: $rouge;
+}
 
 footer{
 

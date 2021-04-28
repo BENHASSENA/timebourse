@@ -1,5 +1,6 @@
 <template>
   <div id="settings">
+    <SiteNav v-if="showNav" ></SiteNav>
     <div >
     <!-- titre du dashboard -->
     <h1 class="title1">Compte</h1>
@@ -51,10 +52,48 @@
     <!-- box settings -->
     <div class="containerboard">
       <div class="boxcontent-settings">
-
-          
+        <!-- <div class="description">
+          <p class="totaltime">Avatar</p>
+          <p class="totaltime">Nom d'utilisateur</p>
+          <p class="totaltime">Compte</p>
+          <p class="totaltime">Mot de passe</p>
+        </div> -->
         <div class="boxleft">
+          <div class="programme4">
+            <div class="task">
+              <div class="boxtime">
+                <span class="picto"><img src="../assets/images/picto-profil.png" alt="picto-profil"/></span>
+                <p>Télécharger une photo de profil</p>
+              </div>
+            </div>
+          </div>
+          <div class="programme4">
+            <div class="task">
+              <div class="boxtime">
+                 <p>Nom de l'utilisateur</p>
+              </div>
+            </div>
+          </div>
+          <div class="programme4">
+            <div class="task">
+              <div class="boxtime">
+                 <p>email du compte</p>
+              </div>
+            </div>
+          </div>
 
+          <div class="programme4">
+            <div class="task">
+              <div class="boxtime">
+                <p>Modifier le mot de passe</p>
+              </div>
+            </div>
+          </div>
+        </div>
+          
+        <!-- <div class="boxleft2">
+         <div class="flex">
+          <p class="totaltime">Avatar</p>
           <div class="programme4">
             <div class="task">
               <div class="boxtime">
@@ -63,50 +102,44 @@
               </div>
             </div>
           </div>
-          <div class="programme4">
-            <div class="task">
-              <div class="boxtime">
-                <p>Nom de l'utilisateur</p>
+         </div>
+         <div class="flex">
+            <p class="totaltime">Nom</p>
+            <div class="programme4">
+              <div class="task">
+                <div class="boxtime">
+                  <p>Nom de l'utilisateur</p>
+                </div>
+              </div>
+            </div>
+         </div>
+          <div class="flex">
+            <p class="totaltime">Compte</p>
+            <div class="box-count">
+              <div class="task">
+                <div class="boxtime">
+                  <p>adresse mail de l'utilisateur</p>
+                </div>
               </div>
             </div>
           </div>
-          <div class="programme4">
-            <div class="task">
-              <div class="boxtime">
-                 <p>adresse mail de l'utilisateur</p>
+          <div class="flex">
+            <p class="totaltime">Mot de passe</p>
+            <div class="box-count">
+              <div class="task">
+                <div class="boxtime">
+                  <p>Modifier le mot de passe</p>
+                </div>
               </div>
             </div>
           </div>
-
-          <div class="programme4">
-            <div class="task">
-              <div class="boxtime">
-                <!-- <p class="totaltime"><a @click="udpdateProfile()">Réinitialiser le mot de passe</a></p> -->
-                <p>Modifier le mot de passe</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div> -->
         <div class="boxright">
           <img id="inscription" src="../assets/images/img-compte.png" alt="image femme qui regarde un tableau" width="300px"/>
         </div>
        
       </div>
     </div>
-<!-- 
-      <transition name="fade">
-        <p v-if="showSuccess" class="success">Mot de passe réinitialiser</p>
-      </transition>
-
-      <form @submit.prevent>
-        <label for="name">Name</label>
-        <input v-model.trim="name" type="text" :placeholder="userProfile.name" id="name" />
-
-        <label for="title">Job Title</label>
-        <input v-model.trim="title" type="text" :placeholder="userProfile.title" id="title" />
-
-        <button @click="updateProfile()" class="button">Mise à jour du mot de passe</button>
-      </form> -->
     </div>
   </div>
 </template>
@@ -115,10 +148,12 @@
 
 import { mapState } from 'vuex'
 import  NavbarUser from '@/components/NavbarUser'
+import SiteNav from '@/components/SiteNav'
 
 export default {
   components: {
-    NavbarUser,
+    NavbarUser,    
+    SiteNav,
   },
   data() {
     return {
@@ -128,7 +163,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['userProfile'])
+    ...mapState(['userProfile']),
+    showNav() {
+      return Object.keys(this.userProfile).length > 1
+    },  
   },
   methods: {
     updateProfile() {
@@ -173,38 +211,28 @@ $grey: grey;
   }
 
   .containerboard{
+
+    padding-top: 5rem;
       
       .boxcontent-settings{
         justify-content: center;
         display: flex;
-        width: 100%;
-        margin: 0 auto;
-      }
 
-      .boxleft{
-        margin: 3% ;
 
-        .totaltime{
-            display: flex;
-            opacity: 80%;
-            z-index: 0;
+        @media screen and (max-width: 690px) {
+          display: block;
+          justify-content: center;
+          margin: 0 auto;
         }
 
-        .programme4{
-          height: 3.5rem;
-          padding: 1rem ;
-          box-sizing: border-box;
 
-          .task{
-           padding: 0;
-           .boxtime{
 
-               align-items: center;
-           }
-          }
+        .boxtime{
+          align-items: center;
         }
-
       }
+      
+
 
       .boxright{
         margin: 3% ;
@@ -213,12 +241,7 @@ $grey: grey;
       }
 
   }
-     
 }
-
-
-
-
 
 </style>
 

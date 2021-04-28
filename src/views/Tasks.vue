@@ -1,5 +1,6 @@
 <template>
     <div id="settings">
+      <SiteNav></SiteNav>
         <div >
             <!-- titre du dashboard -->
             <h1 class="title1">Taches</h1>
@@ -108,7 +109,7 @@
                         </div>
                         <div class="time">
                                 <div class="boxtime">
-                                <p class="titleprogramme">Haute priorité</p>
+                                <p class="titleprogramme prioritytaskred">Haute priorité</p>
                             </div>
                         </div>
                         <div class="time">
@@ -131,13 +132,21 @@
 </template>
 
 <script>
+import SiteNav from '@/components/SiteNav'
 import  NavbarUser from '@/components/NavbarUser'
+
 
 export default {
     
   components: {
     NavbarUser,
-  }
+    SiteNav
+  },
+   computed: {
+    showNav() {
+      return Object.keys(this.userProfile).length > 1
+    },  
+  },
 
 }
 

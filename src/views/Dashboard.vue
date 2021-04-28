@@ -1,5 +1,6 @@
 <template>
   <div id="dashboard"> 
+    <SiteNav v-if="showNav" ></SiteNav>
     <!-- titre du dashboard -->
     <h1 class="title1">Tableau de bord</h1>
     <h2 class="title2">Gestion des tâches</h2>
@@ -134,6 +135,7 @@
           </div>
         </div>
       </div>
+
 
       <div class="boxcenter">
         <div class="programme4">
@@ -391,7 +393,7 @@
 import { mapState } from 'vuex'
 import  NavbarUser from '@/components/NavbarUser'
 import moment from 'moment'
-import CommentModal from '@/components/CommentModal'
+import SiteNav from '@/components/SiteNav'
 import {
     mdiPencil,
     mdiDelete,
@@ -402,7 +404,8 @@ import {
 
 export default {
   components: {
-    NavbarUser
+    NavbarUser,  
+    SiteNav,
   },
   data() {
     return {
@@ -418,6 +421,12 @@ export default {
         rappelTask:'',
         folderTask:'',
       },
+      icons: {
+        mdiPencil,
+        mdiDelete,
+        mdiClockTimeFive,
+        mdiTimer
+      },
       showFormulaire: false,
       dialog: false,
       dialogFolder:false,
@@ -425,19 +434,16 @@ export default {
       menu1:'',
       date:'',
       currentTask:null,
-      icons: {
-        mdiPencil,
-        mdiDelete,
-        mdiClockTimeFive,
-        mdiTimer
-      },
+
       dateToday:'',
-    
     }
-    },
+  },
 
   computed: {
-    ...mapState(['userProfile',  'userTask', 'userFolder'])   
+    ...mapState(['userProfile',  'userTask', 'userFolder']),
+    showNav() {
+      return Object.keys(this.userProfile).length > 1
+    },  
   },
 
   methods: {
@@ -577,14 +583,13 @@ $backgroundgrey: #F9F9F7;
 $grey: grey;
 
 
-.toto{
-  font-size: 16px;
-  color: $bleu;
+
+.boxleft{
+   @media screen and (max-width: 690px) {
+      display: none;
+    }
 }
 
-.yellow{
-  color: $yellow;
-}
     .programme{
       // box-shadow: 10px 10px 20px 0px rgba($dark, 0.3);
       padding: 30px 20px;
@@ -654,6 +659,8 @@ $grey: grey;
       max-width: 15rem;
 
     }
+
+   
 </style>
 
 
