@@ -152,10 +152,11 @@ $grey: grey;
     
         .img1-section1{
             position: relative;
-            top: 100px;
+            top: 130px;
+            width: 70%;
 
             @media screen and (max-width: 1025px) {
-                width: 50%;
+                width: 45%;
                 position: relative;
                 top: 0px;
                 margin: 8rem 0 ;
@@ -165,10 +166,10 @@ $grey: grey;
             width: 90%;
             position: relative;
             bottom: -10px;
-            margin: 8rem 0 ;
+            margin: 5rem 0 ;
 
             @media screen and (max-width: 1025px) {
-                width: 40%;
+                width: 35%;
                 margin-top: 5rem;
 
             }
@@ -182,7 +183,7 @@ $grey: grey;
                 position: relative;
                 top: 100px;
                 left:80px;
-                margin-bottom: 5rem;
+                margin-bottom: 8rem;
             }
         }
     }

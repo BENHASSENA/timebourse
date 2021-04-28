@@ -185,6 +185,7 @@ $grey: grey;
     height: 150px;
     border-radius: 50%;
     background-color: $yellow;
+              
 }
 .circle2{
     width: 40px;
@@ -194,6 +195,12 @@ $grey: grey;
     position: relative;
     top: 5rem;
     left: 10rem;
+
+      @media screen and (max-width: 900px) {
+        position: relative;
+        top: 5rem;
+        left: 5rem;
+    }
 }
 
 
@@ -204,10 +211,27 @@ $grey: grey;
         width: 70%;
         margin: 0 auto;
         margin-bottom: 5rem;
+        
+        @media screen and (max-width: 1025px) {
+        width: 90%;
+        }
+        @media screen and (max-width: 900px) {
+        width: 100%;
+        display: block;
+
+        }
+     
 
         .card{
             width: 25%;    
             padding: 0 2rem ;
+            @media screen and (max-width: 900px) {
+              width: 40%;
+              display: block;
+              margin: 0 auto;
+              margin-top: 5rem;
+            }
+     
 
             .img-card{
                 height: 40%;
@@ -217,6 +241,11 @@ $grey: grey;
 
                 img{
                     width: 25%;
+                     @media screen and (max-width: 900px) {
+                        width: 15%;
+
+                    }
+     
 
                 }
             }
@@ -234,14 +263,36 @@ $grey: grey;
 }
 
 #section2, #section3, #section4, #section5{
+
+
+
     .box-contact{
         display: flex;
         justify-content: center;
         margin: 5rem;
+        @media screen and (max-width: 900px) {
+            margin: 5rem 2rem;
+        }
+            @media screen and (max-width: 750px) {
+                display: block;
+            }
+            
 
         .left{
             width: 30%;
             padding-right: 8rem;
+            @media screen and (max-width: 1025px) {
+                padding-right: 4rem;
+            }
+            @media screen and (max-width: 900px) {
+               margin-bottom: 2rem;
+            }
+            @media screen and (max-width: 750px) {
+                margin: 0 auto;
+                width: 70%;
+                margin-bottom: 2rem ;
+            }
+            
 
             h3{
                 text-align: left;
@@ -257,9 +308,20 @@ $grey: grey;
         .right{
             width: 50%;
 
+            @media screen and (max-width: 1025px) {
+                width: 70%;
+            }
+
+             @media screen and (max-width: 750px) {
+                margin: 0 auto;
+                margin-bottom: 8rem ;
+            }
+
             img{
                 width: 100%;
                 border: 4px solid $yellow;
+
+                
             }
         }
     }
@@ -270,6 +332,18 @@ $grey: grey;
         margin-left: 20rem ;
         position: relative;
         bottom: 100px;
+        
+        @media screen and (max-width: 1025px) {
+            position: relative;
+            bottom: 50px;
+            margin-left: 10rem ;
+        }
+        @media screen and (max-width: 750px) {
+
+
+        }
+
+        
     }
 
 }
@@ -278,6 +352,8 @@ $grey: grey;
      
     .circle{
         background-color: $rouge;
+
+       
     }
 }
 #section4{
@@ -297,6 +373,18 @@ $grey: grey;
 .leftmiror{
         width: 30%;
         padding-left: 8rem;
+
+         @media screen and (max-width: 1025px) {
+                padding-left: 4rem;
+            }
+            @media screen and (max-width: 900px) {
+               margin-bottom: 2rem;
+            }
+            @media screen and (max-width: 750px) {
+                margin: 0 auto;
+                width: 70%;
+                margin-bottom: 2rem ;
+            }
 
         h3{
             text-align: left;
